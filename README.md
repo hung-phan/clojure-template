@@ -117,4 +117,4 @@ your option) any later version.
 
 ## Chestnut
 
-Created with [Chestnut](http://plexus.github.io/chestnut/) 0.9.1 (3a675806).
+Created with [Chestnut](http://plexus.github.io/chestnut/) 0.11.0 (3b671cf8).

@@ -4,20 +4,20 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[org.clojure/clojure "1.8.0-RC5"]
-                 [org.clojure/clojurescript "1.7.228" :scope "provided"]
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [org.clojure/clojurescript "1.8.40" :scope "provided"]
                  [ring "1.4.0"]
-                 [ring/ring-defaults "0.1.5"]
+                 [ring/ring-defaults "0.2.0"]
                  [bk/ring-gzip "0.1.1"]
                  [ring.middleware.logger "0.5.0"]
-                 [compojure "1.4.0"]
-                 [org.omcljs/om "1.0.0-alpha28"]
-                 [environ "1.0.2"]]
+                 [compojure "1.5.0"]
+                 [environ "1.0.2"]
+                 [org.omcljs/om "1.0.0-alpha31"]]
 
   :plugins [[lein-cljsbuild "1.1.1"]
             [lein-environ "1.0.1"]]
 
-  :min-lein-version "2.5.3"
+  :min-lein-version "2.6.1"
 
   :source-paths ["src/clj" "src/cljs" "dev"]
 
@@ -86,12 +86,12 @@
   :doo {:build "test"}
 
   :profiles {:dev
-             {:dependencies [[figwheel "0.5.0-6"]
-                             [figwheel-sidecar "0.5.0-6"]
+             {:dependencies [[figwheel "0.5.2"]
+                             [figwheel-sidecar "0.5.2"]
                              [com.cemerick/piggieback "0.2.1"]
                              [org.clojure/tools.nrepl "0.2.12"]]
 
-              :plugins [[lein-figwheel "0.5.0-6"]
+              :plugins [[lein-figwheel "0.5.2"]
                         [lein-doo "0.1.6"]]
 
               :cljsbuild {:builds
