@@ -8,10 +8,10 @@
 ;; degraded performance.
 (set! *warn-on-reflection* true)
 (set! *unchecked-math* :warn-on-boxed)
+
 (def http-handler
   (wrap-reload #'clojure-template.server/http-handler))
 
-(defn run []
-  (figwheel/start-figwheel!))
+(defn run [] (figwheel/start-figwheel!))
 
 (def browser-repl figwheel/cljs-repl)

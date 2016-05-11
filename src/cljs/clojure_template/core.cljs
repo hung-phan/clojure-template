@@ -6,7 +6,7 @@
 
 (defonce app-state (atom {:text "Hello Chestnut!"}))
 
-(defn root-component [app owner]
+(defn root-component [app]
   (reify
     om/IRender
     (render [_]
