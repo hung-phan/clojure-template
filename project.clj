@@ -5,15 +5,16 @@
             :url  "https://opensource.org/licenses/MIT"}
 
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.8.40" :scope "provided"]
+                 [org.clojure/clojurescript "1.8.51" :scope "provided"]
                  [ring "1.4.0"]
                  [ring/ring-defaults "0.2.0"]
                  [bk/ring-gzip "0.1.1"]
                  [ring.middleware.logger "0.5.0"]
                  [compojure "1.5.0"]
-                 [environ "1.0.2"]
+                 [environ "1.0.3"]
                  [garden "1.3.2"]
-                 [org.omcljs/om "1.0.0-alpha31"]]
+                 [org.omcljs/om "1.0.0-alpha35"]
+                 [hiccup "1.0.5"]]
 
   :plugins [[lein-cljsbuild "1.1.3"]
             [lein-garden "0.2.7"]
@@ -93,16 +94,18 @@
   :doo {:build "test"}
 
   :profiles {:dev
-             {:dependencies [[figwheel "0.5.2"]
-                             [figwheel-sidecar "0.5.2"]
+             {:dependencies [[figwheel "0.5.3-1"]
+                             [figwheel-sidecar "0.5.3-1"]
                              [com.cemerick/piggieback "0.2.1"]
-                             [org.clojure/tools.nrepl "0.2.12"]]
+                             [org.clojure/tools.nrepl "0.2.12"]
+                             [prone "1.1.1"]]
 
               :plugins      [[lein-ring "0.9.7"]
                              [lein-figwheel "0.5.2"]
                              [lein-doo "0.1.6"]]
 
-              :ring         {:handler clojure-template.core/handler}
+              :ring         {:handler clojure-template.core/handler
+                             :stacktrace-middleware prone.middleware/wrap-exceptions}
 
               :cljsbuild    {:builds
                              {:test

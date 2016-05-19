@@ -22,8 +22,8 @@
     <orderEntry type="library" name="Leiningen: clj-logging-config:1.9.10" level="project" />
     <orderEntry type="library" name="Leiningen: clj-stacktrace:0.2.8" level="project" />
     <orderEntry type="library" name="Leiningen: clj-time:0.9.0" level="project" />
-    <orderEntry type="library" name="Leiningen: cljsjs/react-dom:0.14.3-1" level="project" />
-    <orderEntry type="library" name="Leiningen: cljsjs/react:0.14.3-0" level="project" />
+    <orderEntry type="library" name="Leiningen: cljsjs/react-dom:15.0.1-1" level="project" />
+    <orderEntry type="library" name="Leiningen: cljsjs/react:15.0.1-1" level="project" />
     <orderEntry type="library" name="Leiningen: clojure-complete:0.2.4" level="project" />
     <orderEntry type="library" name="Leiningen: clout:2.1.2" level="project" />
     <orderEntry type="library" name="Leiningen: com.cemerick/piggieback:0.2.1" level="project" />
@@ -88,11 +88,12 @@
     <orderEntry type="library" name="Leiningen: org.javassist/javassist:3.18.1-GA" level="project" />
     <orderEntry type="library" name="Leiningen: org.mozilla/rhino:1.7R5" level="project" />
     <orderEntry type="library" name="Leiningen: org.msgpack/msgpack:0.6.10" level="project" />
-    <orderEntry type="library" name="Leiningen: org.omcljs/om:1.0.0-alpha31" level="project" />
+    <orderEntry type="library" name="Leiningen: org.omcljs/om:1.0.0-alpha35" level="project" />
     <orderEntry type="library" name="Leiningen: org.ow2.asm/asm-all:4.2" level="project" />
     <orderEntry type="library" name="Leiningen: org.slf4j/slf4j-api:1.7.7" level="project" />
     <orderEntry type="library" name="Leiningen: org.slf4j/slf4j-log4j12:1.7.7" level="project" />
     <orderEntry type="library" name="Leiningen: org.tobereplaced/mapply:1.0.0" level="project" />
+    <orderEntry type="library" name="Leiningen: prone:1.1.1" level="project" />
     <orderEntry type="library" name="Leiningen: ring-cors:0.1.7" level="project" />
     <orderEntry type="library" name="Leiningen: ring.middleware.logger:0.5.0" level="project" />
     <orderEntry type="library" name="Leiningen: ring/ring-anti-forgery:1.0.0" level="project" />
