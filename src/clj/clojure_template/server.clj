@@ -13,7 +13,7 @@
 (defroutes routes
   (GET "/" []
     (layouts/application (contents/index)))
-  (resources "/"))
+  (resources "/public"))
 
 (def http-handler
   (-> routes
