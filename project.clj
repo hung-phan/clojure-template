@@ -57,7 +57,7 @@
   ;; not be picked up, instead configure figwheel here on the top level.
 
   :figwheel {;; :http-server-root "public"       ;; serve static assets from resources/public/
-             ;; :server-port 3449                ;; default
+             :server-port    3000                           ;; default
              ;; :server-ip "127.0.0.1"           ;; default
              :css-dirs       ["resources/public/css"]       ;; watch and update CSS
 
@@ -104,7 +104,7 @@
                              [lein-figwheel "0.5.2"]
                              [lein-doo "0.1.6"]]
 
-              :ring         {:handler clojure-template.core/handler
+              :ring         {:handler               clojure-template.core/handler
                              :stacktrace-middleware prone.middleware/wrap-exceptions}
 
               :cljsbuild    {:builds

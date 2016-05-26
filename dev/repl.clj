@@ -1,5 +1,5 @@
 (ns repl
-  (:use [figwheel-sidecar.repl-api]))
+  (:require [figwheel-sidecar.repl-api :as figwheel]))
 
-(start-figwheel!)
-(cljs-repl)
+(figwheel/start-figwheel!)
+(figwheel/cljs-repl)
