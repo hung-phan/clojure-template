@@ -1,6 +1,6 @@
 (ns clojure-template.templates.layouts
-  (:require [environ.core :refer [env]])
-  (:use [hiccup.page :only [html5 include-css include-js]]))
+  (:require [environ.core :refer [env]]
+            [hiccup.page :refer [html5 include-css include-js]]))
 
 (defn application [& content]
   (html5 [:head
