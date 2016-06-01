@@ -6,12 +6,14 @@
             [ring.middleware.logger :refer [wrap-with-logger]]
             [environ.core :refer [env]]
             [ring.adapter.jetty :refer [run-jetty]]
-            [clojure-template.controllers.application :as application-controller])
+            [clojure-template.controllers.application :as application-controller]
+            [clojure-template.apis.base :as base-apis])
   (:gen-class))
 
 (defroutes routes
-  (GET "/" [] (application-controller/index))
-  (resources "/public"))
+           base-apis/apis
+           (GET "/" [] (application-controller/index))
+           (resources "/public"))
 
 (def http-handler
   (-> routes
