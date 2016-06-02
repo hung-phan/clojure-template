@@ -4,11 +4,10 @@
 
 (def apis
   (api
-    {:swagger
-     {:ui   "/apis"
-      :spec "/swagger.json"
-      :data {:info {:title "APIS" :description "clojure_template apis"}
-             :tags [{:name "api", :description "apis"}]}}}
+    {:swagger {:ui   "/apis"
+               :spec "/swagger.json"
+               :data {:info {:title "APIS" :description "clojure_template apis"}
+                      :tags [{:name "api", :description "apis"}]}}}
 
     (context "/api/v1" []
       :tags ["api"]
