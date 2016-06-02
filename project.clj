@@ -25,7 +25,7 @@
 
   :min-lein-version "2.6.1"
 
-  :source-paths ["src/clj" "src/cljs" "dev"]
+  :source-paths ["src/clj" "src/cljs" "src/cljc" "dev"]
 
   :test-paths ["test/clj"]
 
@@ -43,7 +43,7 @@
 
   :cljsbuild {:builds
               {:app
-               {:source-paths ["src/cljs"]
+               {:source-paths ["src/cljs" "src/cljc"]
                 :figwheel     true
                 ;; Alternatively, you can configure a function to run every time figwheel reloads.
                 ;; :figwheel {:on-jsload "clojure-template.core/on-figwheel-reload"}
@@ -60,7 +60,7 @@
   ;; not be picked up, instead configure figwheel here on the top level.
 
   :figwheel {;; :http-server-root "public"       ;; serve static assets from resources/public/
-             :server-port    3000                           ;; default
+             :server-port    3000                ;; default
              ;; :server-ip "127.0.0.1"           ;; default
              :css-dirs       ["resources/public/css"]       ;; watch and update CSS
 
@@ -112,18 +112,18 @@
 
               :cljsbuild    {:builds
                              {:test
-                              {:source-paths ["src/cljs" "test/cljs"]
+                              {:source-paths ["src/cljs" "src/cljc" "test/cljs"]
                                :compiler     {:output-to     "resources/public/js/compiled/testable.js"
                                               :main          clojure-template.test-runner
                                               :optimizations :none}}}}}
 
              :uberjar
-             {:source-paths ^:replace ["src/clj"]
+             {:source-paths ^:replace ["src/clj" "src/cljc"]
               :hooks        [leiningen.cljsbuild]
               :omit-source  true
               :aot          :all
               :cljsbuild    {:builds
                              {:app
-                              {:source-paths ^:replace ["src/cljs"]
+                              {:source-paths ^:replace ["src/cljs" "src/cljc"]
                                :compiler     {:optimizations :advanced
                                               :pretty-print  false}}}}}})
