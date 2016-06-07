@@ -3,7 +3,6 @@
             [hiccup.page :refer [html5 include-css include-js]]
             [ring.middleware.anti-forgery :refer [*anti-forgery-token*]]))
 
-;<csrf-meta-tag csrf=data.layoutData.csrf />
 (defn application [& content]
   (html5 [:head
           [:meta {:charset "utf-8"}]
