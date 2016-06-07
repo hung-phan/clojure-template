@@ -59,9 +59,9 @@
   ;; merging. So don't put a :figwheel section under the :dev profile, it will
   ;; not be picked up, instead configure figwheel here on the top level.
 
-  :figwheel {;; :http-server-root "public"       ;; serve static assets from resources/public/
-             :server-port    3000                ;; default
-             ;; :server-ip "127.0.0.1"           ;; default
+  :figwheel {;; :http-server-root "public"                  ;; serve static assets from resources/public/
+             :server-port    3000                           ;; default
+             ;; :server-ip "127.0.0.1"                      ;; default
              :css-dirs       ["resources/public/css"]       ;; watch and update CSS
 
              ;; Instead of booting a separate server on its own port, we embed
