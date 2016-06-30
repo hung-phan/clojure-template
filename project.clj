@@ -30,8 +30,6 @@
 
   :clean-targets ^{:protect false} [:target-path :compile-path "resources/public/js" "resources/public/css"]
 
-  :prep-tasks [["garden" "once"]]
-
   :uberjar-name "clojure-template.jar"
 
   ;; Use `lein run` if you just want to start a HTTP server, without figwheel
