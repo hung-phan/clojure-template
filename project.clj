@@ -7,20 +7,19 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.8.51" :scope "provided"]
                  [org.clojure/data.generators "0.1.2"]
-                 [ring "1.4.0"]
-                 [ring/ring-defaults "0.2.0"]
+                 [ring "1.5.0"]
+                 [ring/ring-defaults "0.2.1"]
                  [bk/ring-gzip "0.1.1"]
                  [ring.middleware.logger "0.5.0"]
-                 [compojure "1.5.0"]
-                 [metosin/compojure-api "1.1.2"]
-                 [prismatic/schema "1.1.1"]
+                 [compojure "1.5.1"]
+                 [metosin/compojure-api "1.1.3"]
+                 [prismatic/schema "1.1.2"]
                  [environ "1.0.3"]
                  [garden "1.3.2"]
                  [org.omcljs/om "1.0.0-alpha35"]
                  [hiccup "1.0.5"]]
 
   :plugins [[lein-cljsbuild "1.1.3"]
-            [lein-garden "0.2.7"]
             [lein-environ "1.0.1"]]
 
   :min-lein-version "2.6.1"
@@ -29,7 +28,9 @@
 
   :test-paths ["test/server"]
 
-  :clean-targets ^{:protect false} [:target-path :compile-path "resources/public/js"]
+  :clean-targets ^{:protect false} [:target-path :compile-path "resources/public/js" "resources/public/css"]
+
+  :prep-tasks [["garden" "once"]]
 
   :uberjar-name "clojure-template.jar"
 
@@ -88,9 +89,9 @@
 
              :server-logfile "log/figwheel.log"}
 
-  :garden {:builds [{:id           "app"
-                     :source-paths ["src/styles"]
-                     :stylesheet   clojure_template.style/app
+  :garden {:builds [{:id           :app
+                     :source-paths ["src/client"]
+                     :stylesheet   clojure-template.styles/app
                      :compiler     {:output-to     "resources/public/css/app.css"
                                     :pretty-print? false}}]}
 
@@ -101,9 +102,11 @@
                              [figwheel-sidecar "0.5.2"]
                              [com.cemerick/piggieback "0.2.1"]
                              [org.clojure/tools.nrepl "0.2.12"]
-                             [prone "1.1.1"]]
+                             [prone "1.1.1"]
+                             [ns-tracker "0.3.0"]]
 
               :plugins      [[lein-ring "0.9.7"]
+                             [lein-garden "0.2.8"]
                              [lein-figwheel "0.5.2"]
                              [lein-doo "0.1.6"]]
 

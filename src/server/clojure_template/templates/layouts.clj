@@ -10,7 +10,7 @@
           [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
           [:meta {:csrf *anti-forgery-token*}]
           [:title "Application"]
-          (include-css "css/style.css")
+          (include-css "css/app.css")
           [:body
            content
            (include-js "js/compiled/clojure_template.js")]]))
