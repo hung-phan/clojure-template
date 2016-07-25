@@ -4,10 +4,8 @@
             [clojure-template.helpers :refer [parse-body]]
             [clojure-template.server :refer [http-handler]]))
 
-(def response (http-handler (mock/request :get "/api/v1/todos")))
-
-(def body (parse-body response))
-
 (deftest get-todos
-  (is (= (:status response) 200))
-  (is (= 10 (count body))))
+  (let [response (http-handler (mock/request :get "/api/v1/todos"))
+        body (parse-body response)]
+    (is (= (:status response) 200))
+    (is (= 10 (count body)))))
