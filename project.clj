@@ -47,11 +47,11 @@
                 ;; Alternatively, you can configure a function to run every time figwheel reloads.
                 ;; :figwheel {:on-jsload "clojure-template.core/on-figwheel-reload"}
 
-                :compiler     {:main                 clojure-template.core
-                               :asset-path           "js/compiled/out"
-                               :output-to            "resources/public/js/compiled/clojure_template.js"
-                               :output-dir           "resources/public/js/compiled/out"
-                               :source-map-timestamp true}}}}
+                :compiler     {:main       clojure-template.core
+                               :asset-path "js/compiled/out"
+                               :output-to  "resources/public/js/compiled/clojure_template.js"
+                               :output-dir "resources/public/js/compiled/out"
+                               :source-map true}}}}
 
   ;; When running figwheel from nREPL, figwheel will read this configuration
   ;; stanza, but it will read it without passing through leiningen's profile
