@@ -12,8 +12,8 @@
                  [bk/ring-gzip "0.1.1"]
                  [ring.middleware.logger "0.5.0"]
                  [compojure "1.5.1"]
-                 [metosin/compojure-api "1.1.3"]
-                 [prismatic/schema "1.1.2"]
+                 [metosin/compojure-api "1.1.4"]
+                 [prismatic/schema "1.1.3"]
                  [environ "1.0.3"]
                  [garden "1.3.2"]
                  [org.omcljs/om "1.0.0-alpha35"]
@@ -93,11 +93,13 @@
                      :compiler     {:output-to     "resources/public/css/app.css"
                                     :pretty-print? false}}]}
 
+  :prep-tasks [["garden" "once"]]
+
   :doo {:build "test"}
 
   :profiles {:dev
-             {:dependencies [[figwheel "0.5.2"]
-                             [figwheel-sidecar "0.5.2"]
+             {:dependencies [[figwheel "0.5.4-7"]
+                             [figwheel-sidecar "0.5.4-7"]
                              [com.cemerick/piggieback "0.2.1"]
                              [org.clojure/tools.nrepl "0.2.12"]
                              [prone "1.1.1"]
