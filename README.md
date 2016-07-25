@@ -27,10 +27,16 @@ loaded the page, so the browser can connect to Weasel.
 
 ## Test
 
-To run the Clojurescript tests, do
+To run Clojurescript tests, do
 
+```bash
+$ lein doo phantom
 ```
-lein doo phantom
+
+To run Clojure tests, do
+
+```bash
+$ lein test # lein test auto if you want to rerun the test for every change
 ```
 
 ## Deploying to Heroku
