@@ -7,5 +7,5 @@
 (deftest get-todos
   (let [response (http-handler (mock/request :get "/api/v1/todos"))
         body (parse-body response)]
-    (is (= (:status response) 200))
+    (is (= 200 (:status response)))
     (is (= 10 (count body)))))
