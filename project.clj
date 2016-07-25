@@ -17,7 +17,8 @@
                  [environ "1.0.3"]
                  [garden "1.3.2"]
                  [org.omcljs/om "1.0.0-alpha35"]
-                 [hiccup "1.0.5"]]
+                 [hiccup "1.0.5"]
+                 [cheshire "5.6.3"]]
 
   :plugins [[lein-cljsbuild "1.1.3"]
             [lein-environ "1.0.1"]]
@@ -93,8 +94,6 @@
                      :compiler     {:output-to     "resources/public/css/app.css"
                                     :pretty-print? false}}]}
 
-  :prep-tasks [["garden" "once"]]
-
   :doo {:build "test"}
 
   :profiles {:dev
@@ -102,13 +101,15 @@
                              [figwheel-sidecar "0.5.4-7"]
                              [com.cemerick/piggieback "0.2.1"]
                              [org.clojure/tools.nrepl "0.2.12"]
+                             [ring/ring-mock "0.3.0"]
                              [prone "1.1.1"]
                              [ns-tracker "0.3.0"]]
 
               :plugins      [[lein-ring "0.9.7"]
                              [lein-garden "0.2.8"]
                              [lein-figwheel "0.5.2"]
-                             [lein-doo "0.1.6"]]
+                             [lein-doo "0.1.6"]
+                             [lein-auto "0.1.2"]]
 
               :ring         {:handler               clojure-template.core/handler
                              :stacktrace-middleware prone.middleware/wrap-exceptions}

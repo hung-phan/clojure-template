@@ -7,4 +7,3 @@
     om/IRender
     (render [_]
       (dom/div nil (dom/h1 nil (:text app))))))
-

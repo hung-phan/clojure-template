@@ -14,5 +14,5 @@ figwheel_server.log
 pom.xml
 pom.xml.asc
 .idea/
-/resources/public/css/app.css
+/resources/public/css
 .gems
