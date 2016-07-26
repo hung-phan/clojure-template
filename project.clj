@@ -26,7 +26,7 @@
 
   :min-lein-version "2.6.1"
 
-  :source-paths ["src/server" "src/client" "src/common" "dev"]
+  :source-paths ["src/server" "src/client" "src/common"]
 
   :test-paths ["test/server"]
 
@@ -43,8 +43,9 @@
   :repl-options {:init-ns user}
 
   :cljsbuild {:builds
-              {:app
-               {:source-paths ["src/client" "src/common"]
+              [{:id           "app"
+                :source-paths ["src/client" "src/common"]
+
                 :figwheel     true
                 ;; Alternatively, you can configure a function to run every time figwheel reloads.
                 ;; :figwheel {:on-jsload "clojure-template.client/on-figwheel-reload"}
@@ -53,7 +54,23 @@
                                :asset-path           "js/compiled/out"
                                :output-to            "resources/public/js/compiled/clojure_template.js"
                                :output-dir           "resources/public/js/compiled/out"
-                               :source-map-timestamp true}}}}
+                               :source-map-timestamp true}}
+
+               {:id           "test"
+                :source-paths ["src/client" "src/common" "test/client"]
+                :compiler     {:main          clojure-template.test-runner
+                               :output-to     "resources/public/js/compiled/testable.js"
+                               :optimizations :none}}
+
+               {:id           "min"
+                :source-paths ["src/client" "src/common"]
+                :jar          true
+                :compiler     {:main                 clojure_template.client
+                               :output-to            "resources/public/js/compiled/clojure_template.js"
+                               :output-dir           "target"
+                               :source-map-timestamp true
+                               :optimizations        :advanced
+                               :pretty-print         false}}]}
 
   ;; When running figwheel from nREPL, figwheel will read this configuration
   ;; stanza, but it will read it without passing through leiningen's profile
@@ -114,23 +131,13 @@
               :ring         {:handler               clojure-template.server/http-handler
                              :stacktrace-middleware prone.middleware/wrap-exceptions}
 
-              :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
+              :source-paths ["dev"]
 
-              :cljsbuild    {:builds
-                             {:test
-                              {:source-paths ["src/client" "src/common" "test/client"]
-                               :compiler     {:output-to     "resources/public/js/compiled/testable.js"
-                                              :main          clojure-template.test-runner
-                                              :optimizations :none}}}}}
+              :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}
 
              :uberjar
              {:source-paths ^:replace ["src/server" "src/common"]
-              :prep-tasks   [["garden" "once"]]
-              :hooks        [leiningen.cljsbuild]
+              :prep-tasks   ["compile" ["cljsbuild" "once" "min"] ["garden" "once"]]
+              :hooks        []
               :omit-source  true
-              :aot          :all
-              :cljsbuild    {:builds
-                             {:app
-                              {:source-paths ^:replace ["src/client" "src/common"]
-                               :compiler     {:optimizations :advanced
-                                              :pretty-print  false}}}}}})
+              :aot          :all}})
