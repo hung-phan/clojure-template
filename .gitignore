@@ -15,4 +15,7 @@ pom.xml
 pom.xml.asc
 .idea/
 /resources/public/css
+cookies
 .gems
+.ruby-version
+.rbenv-gemsets

@@ -18,7 +18,8 @@
                  [garden "1.3.2"]
                  [org.omcljs/om "1.0.0-alpha35"]
                  [hiccup "1.0.5"]
-                 [cheshire "5.6.3"]]
+                 [cheshire "5.6.3"]
+                 [ns-tracker "0.3.0"]]
 
   :plugins [[lein-cljsbuild "1.1.3"]
             [lein-environ "1.0.1"]]
@@ -46,13 +47,13 @@
                {:source-paths ["src/client" "src/common"]
                 :figwheel     true
                 ;; Alternatively, you can configure a function to run every time figwheel reloads.
-                ;; :figwheel {:on-jsload "clojure-template.core/on-figwheel-reload"}
+                ;; :figwheel {:on-jsload "clojure-template.client/on-figwheel-reload"}
 
-                :compiler     {:main       clojure-template.core
-                               :asset-path "js/compiled/out"
-                               :output-to  "resources/public/js/compiled/clojure_template.js"
-                               :output-dir "resources/public/js/compiled/out"
-                               :source-map true}}}}
+                :compiler     {:main                 clojure-template.client
+                               :asset-path           "js/compiled/out"
+                               :output-to            "resources/public/js/compiled/clojure_template.js"
+                               :output-dir           "resources/public/js/compiled/out"
+                               :source-map-timestamp true}}}}
 
   ;; When running figwheel from nREPL, figwheel will read this configuration
   ;; stanza, but it will read it without passing through leiningen's profile
@@ -102,8 +103,7 @@
                              [com.cemerick/piggieback "0.2.1"]
                              [org.clojure/tools.nrepl "0.2.12"]
                              [ring/ring-mock "0.3.0"]
-                             [prone "1.1.1"]
-                             [ns-tracker "0.3.0"]]
+                             [prone "1.1.1"]]
 
               :plugins      [[lein-ring "0.9.7"]
                              [lein-garden "0.2.8"]
@@ -111,7 +111,7 @@
                              [lein-doo "0.1.6"]
                              [lein-auto "0.1.2"]]
 
-              :ring         {:handler               clojure-template.core/handler
+              :ring         {:handler               clojure-template.server/http-handler
                              :stacktrace-middleware prone.middleware/wrap-exceptions}
 
               :cljsbuild    {:builds
@@ -123,6 +123,7 @@
 
              :uberjar
              {:source-paths ^:replace ["src/server" "src/common"]
+              :prep-tasks   [["garden" "once"]]
               :hooks        [leiningen.cljsbuild]
               :omit-source  true
               :aot          :all

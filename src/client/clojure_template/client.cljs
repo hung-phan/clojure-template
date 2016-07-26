@@ -1,4 +1,4 @@
-(ns clojure-template.core
+(ns clojure-template.client
   (:require [om.core :as om :include-macros true]
             [clojure-template.components.app :refer [root-component]]))
 

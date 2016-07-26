@@ -6,7 +6,7 @@ Additionally, this will be the boilerplate for Om (Next) and Reagent (Reframe).
 
 ```bash
 $ lein repl
-$ lein garden once # you only need to run once every time you run the project
+$ lein garden auto # you only need to run once every time you run the project
 ```
 
 In the REPL, type
@@ -36,7 +36,7 @@ $ lein doo phantom
 To run Clojure tests, do
 
 ```bash
-$ lein test # lein test auto if you want to rerun the test for every change
+$ lein test # lein auto test if you want to rerun the test for every change
 ```
 
 ## Deploying to Heroku
@@ -63,8 +63,9 @@ server command to run. Heroku also compiles and runs your code with a
 Leiningen "production" profile, instead of "dev". To locally simulate
 what Heroku does you can do:
 
-``` sh
-lein with-profile -dev,+production uberjar && foreman start
+```bash
+$ ./scripts/build.sh
+$ ./scripts/start.sh
 ```
 
 Now your app is running at
