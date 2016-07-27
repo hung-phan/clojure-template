@@ -1,12 +1,14 @@
 (ns clojure-template.client
-  (:require [om.core :as om :include-macros true]
-            [clojure-template.components.app :refer [root-component]]))
+  (:require [om.next :as om]
+            [clojure-template.components.todos :refer [Todos]]
+            [goog.dom :as gdom]))
 
 (enable-console-print!)
 
 (defonce app-state (atom {:text "Hello Chestnut!"}))
+(defonce reconciler (om/reconciler {:state app-state}))
 
-(om/root
-  root-component
-  app-state
-  {:target (.getElementById js/document "app")})
+(om/add-root!
+  reconciler
+  Todos
+  (gdom/getElement "app"))
