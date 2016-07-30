@@ -5,14 +5,14 @@
             :url  "https://opensource.org/licenses/MIT"}
 
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.8.51" :scope "provided"]
+                 [org.clojure/clojurescript "1.9.93" :scope "provided"]
                  [org.clojure/data.generators "0.1.2"]
                  [ring "1.5.0"]
                  [ring/ring-defaults "0.2.1"]
                  [bk/ring-gzip "0.1.1"]
                  [ring.middleware.logger "0.5.0"]
                  [compojure "1.5.1"]
-                 [metosin/compojure-api "1.1.4"]
+                 [metosin/compojure-api "1.1.5"]
                  [prismatic/schema "1.1.3"]
                  [environ "1.0.3"]
                  [garden "1.3.2"]

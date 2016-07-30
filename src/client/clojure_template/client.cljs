@@ -5,8 +5,13 @@
 
 (enable-console-print!)
 
-(defonce app-state (atom {:text "Hello Chestnut!"}))
+(defonce app-state (atom {:count 0}))
 (defonce reconciler (om/reconciler {:state app-state}))
+
+(js/setInterval
+  (fn []
+    (swap! app-state update-in [:count] inc))
+  1000)
 
 (om/add-root!
   reconciler

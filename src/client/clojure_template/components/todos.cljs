@@ -5,6 +5,6 @@
 (defui Todos
   Object
   (render [this]
-    (let [{:keys [text]} (om/props this)]
+    (let [{:keys [count]} (om/props this)]
       (dom/div nil
-               (dom/h1 nil text)))))
+               (dom/h1 nil count)))))
