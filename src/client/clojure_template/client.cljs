@@ -1,19 +1,17 @@
 (ns clojure-template.client
-  (:require [om.next :as om]
-            [clojure-template.components.todos :refer [Todos]]
+  (:require-macros [reagent.ratom :refer [reaction]])
+  (:require [reagent.core :as r]
             [goog.dom :as gdom]))
 
 (enable-console-print!)
 
-(defonce app-state (atom {:count 0}))
-(defonce reconciler (om/reconciler {:state app-state}))
+(defn Todos []
+  [:div
+   {:class-name "container"}
+   [:div
+    {:class-name "row"}
+    [:div
+     {:class-name "col-md-12"}
+     "Hello world"]]])
 
-(js/setInterval
-  (fn []
-    (swap! app-state update-in [:count] inc))
-  1000)
-
-(om/add-root!
-  reconciler
-  Todos
-  (gdom/getElement "app"))
+(r/render-component [Todos] (gdom/getElement "app"))
