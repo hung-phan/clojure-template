@@ -12,5 +12,3 @@
      "Hello world"]]])
 
 (r/render-component [Todos] (gdom/getElement "app"))
-
-(js/console.log "yolo")
