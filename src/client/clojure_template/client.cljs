@@ -6,12 +6,11 @@
 (enable-console-print!)
 
 (defn Todos []
-  [:div
-   {:class-name "container"}
-   [:div
-    {:class-name "row"}
-    [:div
-     {:class-name "col-md-12"}
+  [:div.container
+   [:div.row
+    [:div.col-md-12
      "Hello world"]]])
 
 (r/render-component [Todos] (gdom/getElement "app"))
+
+(js/console.log "yolo")
