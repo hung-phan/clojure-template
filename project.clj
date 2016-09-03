@@ -5,19 +5,19 @@
             :url  "https://opensource.org/licenses/MIT"}
 
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.9.198" :scope "provided"]
+                 [org.clojure/clojurescript "1.9.227" :scope "provided"]
                  [org.clojure/data.generators "0.1.2"]
                  [ring "1.5.0"]
                  [ring/ring-defaults "0.2.1"]
                  [bk/ring-gzip "0.1.1"]
                  [ring.middleware.logger "0.5.0"]
                  [compojure "1.5.1"]
-                 [metosin/compojure-api "1.1.6"]
+                 [metosin/compojure-api "1.1.8"]
                  [prismatic/schema "1.1.3"]
                  [environ "1.1.0"]
                  [garden "1.3.2"]
                  [reagent "0.6.0-rc"]
-                 [re-frame "0.8.0-alpha9"]
+                 [re-frame "0.8.0"]
                  [hiccup "1.0.5"]
                  [cheshire "5.6.3"]
                  [ns-tracker "0.3.0"]]
@@ -116,8 +116,8 @@
   :doo {:build "test"}
 
   :profiles {:dev
-             {:dependencies [[figwheel "0.5.4-7"]
-                             [figwheel-sidecar "0.5.4-7"]
+             {:dependencies [[figwheel "0.5.6"]
+                             [figwheel-sidecar "0.5.6"]
                              [com.cemerick/piggieback "0.2.1"]
                              [org.clojure/tools.nrepl "0.2.12"]
                              [ring/ring-mock "0.3.0"]
