@@ -7,6 +7,7 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.9.227" :scope "provided"]
                  [org.clojure/data.generators "0.1.2"]
+                 [org.clojure/core.async "0.2.385"]
                  [ring "1.5.0"]
                  [ring/ring-defaults "0.2.1"]
                  [bk/ring-gzip "0.1.1"]
@@ -20,6 +21,7 @@
                  [re-frame "0.8.0"]
                  [hiccup "1.0.5"]
                  [cheshire "5.6.3"]
+                 [funcool/cats "2.0.0"]
                  [ns-tracker "0.3.0"]]
 
   :plugins [[lein-cljsbuild "1.1.3"]

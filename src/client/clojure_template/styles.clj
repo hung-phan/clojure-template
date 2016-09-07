@@ -2,6 +2,7 @@
   (:require [garden.def :refer [defstylesheet defstyles]]
             [garden.units :refer [px]]))
 
-(defstyles app
-  [:h1
-   {:text-decoration "underline"}])
+(defstyles
+  app
+  [:.todos-body
+   {:margin-top (px 20)}])
