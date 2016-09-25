@@ -5,9 +5,9 @@
             :url  "https://opensource.org/licenses/MIT"}
 
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.9.227" :scope "provided"]
+                 [org.clojure/clojurescript "1.9.229" :scope "provided"]
                  [org.clojure/data.generators "0.1.2"]
-                 [org.clojure/core.async "0.2.385"]
+                 [org.clojure/core.async "0.2.391"]
                  [ring "1.5.0"]
                  [ring/ring-defaults "0.2.1"]
                  [bk/ring-gzip "0.1.1"]
@@ -17,12 +17,14 @@
                  [prismatic/schema "1.1.3"]
                  [environ "1.1.0"]
                  [garden "1.3.2"]
-                 [reagent "0.6.0-rc"]
+                 [reagent "0.6.0"]
                  [re-frame "0.8.0"]
                  [hiccup "1.0.5"]
                  [cheshire "5.6.3"]
                  [funcool/cats "2.0.0"]
-                 [ns-tracker "0.3.0"]]
+                 [ns-tracker "0.3.0"]
+                 [bidi "2.0.11"]
+                 [cljs-http "0.1.41"]]
 
   :plugins [[lein-cljsbuild "1.1.3"]
             [lein-environ "1.0.1"]]
@@ -57,7 +59,8 @@
                                :asset-path           "js/compiled/out"
                                :output-to            "resources/public/js/compiled/clojure_template.js"
                                :output-dir           "resources/public/js/compiled/out"
-                               :source-map-timestamp true}}
+                               :source-map-timestamp true
+                               :closure-defines      {"goog.DEBUG" true}}}
 
                {:id           "test"
                 :source-paths ["src/client" "src/common" "test/client"]
@@ -68,12 +71,13 @@
                {:id           "min"
                 :source-paths ["src/client" "src/common"]
                 :jar          true
-                :compiler     {:main                 clojure_template.client
+                :compiler     {:main                 clojure-template.client
                                :output-to            "resources/public/js/compiled/clojure_template.js"
                                :output-dir           "target"
                                :source-map-timestamp true
                                :optimizations        :advanced
-                               :pretty-print         false}}]}
+                               :pretty-print         false
+                               :closure-defines      {"goog.DEBUG" false}}}]}
 
   ;; When running figwheel from nREPL, figwheel will read this configuration
   ;; stanza, but it will read it without passing through leiningen's profile
@@ -118,12 +122,13 @@
   :doo {:build "test"}
 
   :profiles {:dev
-             {:dependencies [[figwheel "0.5.6"]
-                             [figwheel-sidecar "0.5.6"]
+             {:dependencies [[figwheel "0.5.7"]
+                             [figwheel-sidecar "0.5.7"]
                              [com.cemerick/piggieback "0.2.1"]
                              [org.clojure/tools.nrepl "0.2.12"]
                              [ring/ring-mock "0.3.0"]
-                             [prone "1.1.1"]]
+                             [prone "1.1.2"]
+                             [binaryage/devtools "0.8.2"]]
 
               :plugins      [[lein-ring "0.9.7"]
                              [lein-garden "0.2.8"]
