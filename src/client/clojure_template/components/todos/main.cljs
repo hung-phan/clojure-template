@@ -1,4 +1,4 @@
-(ns clojure-template.components.main
+(ns clojure-template.components.todos.main
   (:require [re-frame.core :refer [subscribe dispatch]]
             [clojure-template.components.todos.logic-bundle :as lb]
             [clojure-template.components.todos.header :refer [header-component]]

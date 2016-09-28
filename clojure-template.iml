@@ -30,6 +30,7 @@
     <orderEntry type="library" name="Leiningen: clj-stacktrace:0.2.8" level="project" />
     <orderEntry type="library" name="Leiningen: clj-time:0.11.0" level="project" />
     <orderEntry type="library" name="Leiningen: clj-tuple:0.2.2" level="project" />
+    <orderEntry type="library" name="Leiningen: cljs-http:0.1.41" level="project" />
     <orderEntry type="library" name="Leiningen: cljsjs/react-dom-server:15.2.1-0" level="project" />
     <orderEntry type="library" name="Leiningen: cljsjs/react-dom:15.2.1-0" level="project" />
     <orderEntry type="library" name="Leiningen: cljsjs/react:15.2.1-0" level="project" />
@@ -38,7 +39,9 @@
     <orderEntry type="library" name="Leiningen: clout:2.1.2" level="project" />
     <orderEntry type="library" name="Leiningen: com.cemerick/piggieback:0.2.1" level="project" />
     <orderEntry type="library" name="Leiningen: com.cognitect/transit-clj:0.8.285" level="project" />
+    <orderEntry type="library" name="Leiningen: com.cognitect/transit-cljs:0.8.237" level="project" />
     <orderEntry type="library" name="Leiningen: com.cognitect/transit-java:0.8.311" level="project" />
+    <orderEntry type="library" name="Leiningen: com.cognitect/transit-js:0.8.846" level="project" />
     <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-annotations:2.2.3" level="project" />
     <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-core:2.7.5" level="project" />
     <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-databind:2.2.3" level="project" />
@@ -117,6 +120,7 @@
     <orderEntry type="library" name="Leiningen: net.incongru.watchservice/barbary-watchservice:1.0" level="project" />
     <orderEntry type="library" name="Leiningen: net.java.dev.jna/jna:3.2.2" level="project" />
     <orderEntry type="library" name="Leiningen: net.sf.jopt-simple/jopt-simple:4.6" level="project" />
+    <orderEntry type="library" name="Leiningen: noencore:0.2.1" level="project" />
     <orderEntry type="library" name="Leiningen: ns-tracker:0.3.0" level="project" />
     <orderEntry type="library" name="Leiningen: onelog:0.4.5" level="project" />
     <orderEntry type="library" name="Leiningen: org.abego.treelayout/org.abego.treelayout.core:1.0.1" level="project" />

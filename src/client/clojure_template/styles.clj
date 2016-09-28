@@ -1,8 +1,6 @@
 (ns clojure-template.styles
   (:require [garden.def :refer [defstylesheet defstyles]]
-            [garden.units :refer [px]]))
+            [clojure-template.components.todos.style :as todos]))
 
-(defstyles
-  app
-  [:.todos-body
-   {:margin-top (px 20)}])
+(defstyles app
+           todos/body)

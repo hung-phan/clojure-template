@@ -3,7 +3,7 @@
   (:require [reagent.core :as r]
             [goog.dom :as gdom]
             [devtools.core :as devtools]
-            [clojure-template.components.main :refer [todos-component]]))
+            [clojure-template.components.todos.main :refer [todos-component]]))
 
 ;; enable console log debugging using devtools
 (when ^boolean js/goog.DEBUG
