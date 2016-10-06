@@ -60,7 +60,6 @@
                                :asset-path           "js/compiled/out"
                                :output-to            "resources/public/js/compiled/clojure_template.js"
                                :output-dir           "resources/public/js/compiled/out"
-                               :source-map-timestamp true
                                :closure-defines      {"goog.DEBUG" true}}}
 
                {:id           "test"
@@ -75,7 +74,6 @@
                 :compiler     {:main                 clojure-template.client
                                :output-to            "resources/public/js/compiled/clojure_template.js"
                                :output-dir           "target"
-                               :source-map-timestamp true
                                :optimizations        :advanced
                                :pretty-print         false
                                :closure-defines      {"goog.DEBUG" false}}}]}
