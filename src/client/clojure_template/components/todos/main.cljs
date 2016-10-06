@@ -5,10 +5,9 @@
             [clojure-template.components.todos.add :refer [add-component]]
             [clojure-template.components.todos.body :refer [body-component]]))
 
-(lb/fetch-todos)
-
 (defn todos-component []
   (let [todos (rf/subscribe [lb/todos-subscription])]
+    (lb/fetch-todos)
     (fn []
       [:div.container
        [:div.row
