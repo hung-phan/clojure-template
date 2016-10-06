@@ -19,6 +19,7 @@
                  [garden "1.3.2"]
                  [reagent "0.6.0"]
                  [re-frame "0.8.0"]
+                 [binaryage/devtools "0.8.2"]
                  [hiccup "1.0.5"]
                  [cheshire "5.6.3"]
                  [funcool/cats "2.0.0"]
@@ -127,8 +128,7 @@
                              [com.cemerick/piggieback "0.2.1"]
                              [org.clojure/tools.nrepl "0.2.12"]
                              [ring/ring-mock "0.3.0"]
-                             [prone "1.1.2"]
-                             [binaryage/devtools "0.8.2"]]
+                             [prone "1.1.2"]]
 
               :plugins      [[lein-ring "0.9.7"]
                              [lein-garden "0.2.8"]

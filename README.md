@@ -69,7 +69,7 @@ $ ./scripts/start.sh
 ```
 
 Now your app is running at
-[http://localhost:5000](http://localhost:5000) in production mode.
+[http://localhost:3000](http://localhost:3000) in production mode.
 
 # License
 

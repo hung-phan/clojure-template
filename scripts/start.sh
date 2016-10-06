@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-foreman start
+PORT=3000 foreman start
