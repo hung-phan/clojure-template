@@ -1,6 +1,6 @@
 (ns clojure-template.store
-  (:require [re-frame.core :refer [reg-event-db debug dispatch]]))
+  (:require [re-frame.core :as rc]))
 
-(def interceptors [(when ^boolean js/goog.DEBUG debug)])
+(def interceptors [(when ^boolean js/goog.DEBUG rc/debug)])
 
-(dispatch [:initialize-db])
+(rc/dispatch [:initialize-db])
