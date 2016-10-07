@@ -22,5 +22,5 @@
       wrap-gzip))
 
 (defn -main [& [port]]
-  (let [port (Integer. (or port (env :port) 3000))]
+  (let [port (read-string (or port (env :port) 3000))]
     (run-jetty http-handler {:port port :join? false})))
