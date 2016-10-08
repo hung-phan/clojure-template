@@ -10,6 +10,11 @@
 (def ^:private remove-todo-action :todos/remove-todo)
 (def ^:private complete-todo-action :todos/complete-todo)
 
+(def ^:private todos-path :todos)
+(def ^:private todos-interceptors [db/interceptors [(rf/path todos-path)]])
+
+(def todos-subscription ::todos)
+
 (defn set-todos [todos] [set-todos-action todos])
 (defn add-todo [todo] [add-todo-action todo])
 (defn remove-todo [index] [remove-todo-action index])
@@ -18,10 +23,6 @@
   (go
     (let [resp (<! (http/get "/api/v1/todos"))]
       (rf/dispatch (set-todos (:body resp))))))
-
-(def todos-path :todos)
-(def todos-subscription ::todos)
-(def todos-interceptors [db/interceptors [(rf/path todos-path)]])
 
 (rf/reg-sub
   todos-subscription
