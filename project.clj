@@ -8,6 +8,7 @@
                  [org.clojure/clojurescript "1.9.229" :scope "provided"]
                  [org.clojure/data.generators "0.1.2"]
                  [org.clojure/core.async "0.2.391"]
+                 [http-kit "2.2.0"]
                  [ring "1.5.0"]
                  [ring/ring-defaults "0.2.1"]
                  [bk/ring-gzip "0.1.1"]
