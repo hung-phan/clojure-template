@@ -7,7 +7,7 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.9.229" :scope "provided"]
                  [org.clojure/data.generators "0.1.2"]
-                 [org.clojure/core.async "0.2.391"]
+                 [org.clojure/core.async "0.2.395"]
                  [http-kit "2.2.0"]
                  [ring "1.5.0"]
                  [ring/ring-defaults "0.2.1"]
@@ -25,8 +25,8 @@
                  [cheshire "5.6.3"]
                  [funcool/cats "2.0.0"]
                  [ns-tracker "0.3.0"]
-                 [bidi "2.0.11"]
-                 [cljs-http "0.1.41"]]
+                 [bidi "2.0.12"]
+                 [cljs-http "0.1.42"]]
 
   :plugins [[lein-cljsbuild "1.1.3"]
             [lein-environ "1.0.1"]]
@@ -122,8 +122,8 @@
   :doo {:build "test"}
 
   :profiles {:dev
-             {:dependencies [[figwheel "0.5.7"]
-                             [figwheel-sidecar "0.5.7"]
+             {:dependencies [[figwheel "0.5.8"]
+                             [figwheel-sidecar "0.5.8"]
                              [com.cemerick/piggieback "0.2.1"]
                              [org.clojure/tools.nrepl "0.2.12"]
                              [ring/ring-mock "0.3.0"]
