@@ -6,7 +6,7 @@ Additionally, this will be the boilerplate for Om (Next) and Reagent (Reframe).
 
 ```bash
 $ lein repl
-$ lein garden auto # you only need to run once everytime you run the project
+$ lein garden auto app_development # compile css automatically
 ```
 
 In the REPL, type

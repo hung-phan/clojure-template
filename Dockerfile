@@ -11,6 +11,8 @@ COPY project.clj .
 
 RUN lein deps
 
+RUN lein cljsbuild once prefetch_dependencies
+
 COPY . .
 
 RUN ./scripts/build

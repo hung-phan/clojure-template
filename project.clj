@@ -50,34 +50,42 @@
   :repl-options {:init-ns user}
 
   :cljsbuild {:builds
-              [{:id           "app"
+              [{:id           "app_development"
                 :source-paths ["src/client" "src/common"]
 
                 :figwheel     true
                 ;; Alternatively, you can configure a function to run every time figwheel reloads.
                 ;; :figwheel {:on-jsload "clojure-template.client/on-figwheel-reload"}
 
-                :compiler     {:main                 clojure-template.client
-                               :asset-path           "js/compiled/out"
-                               :output-to            "resources/public/js/compiled/clojure_template.js"
-                               :output-dir           "resources/public/js/compiled/out"
-                               :closure-defines      {"goog.DEBUG" true}}}
+                :compiler     {:main            clojure-template.client
+                               :asset-path      "js/app"
+                               :output-to       "resources/public/js/app.js"
+                               :output-dir      "resources/public/js/app"
+                               :closure-defines {"goog.DEBUG" true}}}
+
+               {:id           "app_production"
+                :source-paths ["src/client" "src/common"]
+                :jar          true
+                :compiler     {:main            clojure-template.client
+                               :output-to       "resources/public/js/app.js"
+                               :output-dir      "target"
+                               :optimizations   :advanced
+                               :pretty-print    false
+                               :closure-defines {"goog.DEBUG" false}}}
 
                {:id           "test"
                 :source-paths ["src/client" "src/common" "test/client"]
                 :compiler     {:main          clojure-template.test-runner
-                               :output-to     "resources/public/js/compiled/testable.js"
+                               :output-to     "resources/public/js/test.js"
                                :optimizations :none}}
 
-               {:id           "min"
-                :source-paths ["src/client" "src/common"]
-                :jar          true
-                :compiler     {:main                 clojure-template.client
-                               :output-to            "resources/public/js/compiled/clojure_template.js"
-                               :output-dir           "target"
-                               :optimizations        :advanced
-                               :pretty-print         false
-                               :closure-defines      {"goog.DEBUG" false}}}]}
+               {:id           "prefetch_dependencies"
+                :source-paths ["dev"]
+                :compiler     {:main          dev.prefetch-dependencies
+                               :asset-path    "js/prefetch_dependencies"
+                               :output-to     "resources/public/js/prefetch_dependencies.js"
+                               :output-dir    "resources/public/js/prefetch_dependencies"
+                               :optimizations :none}}]}
 
   ;; When running figwheel from nREPL, figwheel will read this configuration
   ;; stanza, but it will read it without passing through leiningen's profile
@@ -113,7 +121,13 @@
 
              :server-logfile "log/figwheel.log"}
 
-  :garden {:builds [{:id           :app
+  :garden {:builds [{:id           "app_development"
+                     :source-paths ["src/client"]
+                     :stylesheet   clojure-template.styles/app
+                     :compiler     {:output-to     "resources/public/css/app.css"
+                                    :pretty-print? true}}
+
+                    {:id           "app_production"
                      :source-paths ["src/client"]
                      :stylesheet   clojure-template.styles/app
                      :compiler     {:output-to     "resources/public/css/app.css"
@@ -144,7 +158,9 @@
 
              :uberjar
              {:source-paths ^:replace ["src/server" "src/common"]
-              :prep-tasks   ["compile" ["cljsbuild" "once" "min"] ["garden" "once"]]
+              :prep-tasks   [["compile"]
+                             ["cljsbuild" "once" "app_production"]
+                             ["garden" "once" "app_production"]]
               :hooks        []
               :omit-source  true
               :aot          :all}})
