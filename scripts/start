@@ -1,2 +1,10 @@
 #!/bin/bash
-CLJ_ENV=production PORT=3000 java -cp target/clojure-template.jar clojure.main -m clojure-template.server
+if [ -z "${CLJ_EVN}" ]; then
+  export CLJ_EVN=${1:-production}
+fi
+
+if [ -z "${PORT}" ]; then
+  export PORT=${2:-3000}
+fi
+
+java -cp target/clojure-template.jar clojure.main -m clojure-template.server
