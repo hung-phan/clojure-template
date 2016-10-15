@@ -1,2 +1,2 @@
 #!/bin/bash
-CLJ_ENV=production PORT=3000 lein run
+CLJ_ENV=production PORT=3000 java -cp target/clojure-template.jar clojure.main -m clojure-template.server
