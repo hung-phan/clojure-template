@@ -1,0 +1,2 @@
+#!/bin/bash
+CLJ_ENV=production PORT=3000 lein run

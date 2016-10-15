@@ -64,12 +64,21 @@ Leiningen "production" profile, instead of "dev". To locally simulate
 what Heroku does you can do:
 
 ```bash
-$ ./scripts/build.sh
-$ ./scripts/start.sh
+$ ./scripts/build
+$ ./scripts/start
 ```
 
 Now your app is running at
 [http://localhost:3000](http://localhost:3000) in production mode.
+
+## Docker container
+
+```bash
+$ docker-compose build
+$ docker-compose up
+```
+
+Access http://localhost:3000 to see the application
 
 # License
 
