@@ -26,6 +26,7 @@
                  [funcool/cats "2.0.0"]
                  [ns-tracker "0.3.0"]
                  [bidi "2.0.12"]
+                 [kibu/pushy "0.3.6"]
                  [cljs-http "0.1.42"]]
 
   :plugins [[lein-cljsbuild "1.1.3"]

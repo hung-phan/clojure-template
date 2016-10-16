@@ -1,3 +1,4 @@
+.DS_Store
 *.class
 *.jar
 /.lein-*
@@ -8,13 +9,13 @@
 /lib/
 /log/
 /out/
-/resources/public/js/compiled/**
+/resources/public/js/
+/resources/public/css
 /target/
 figwheel_server.log
 pom.xml
 pom.xml.asc
 .idea/
-/resources/public/css
 cookies
 .gems
 .ruby-version
