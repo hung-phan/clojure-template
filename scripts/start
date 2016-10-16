@@ -1,6 +1,6 @@
 #!/bin/bash
-if [ -z "${CLJ_EVN}" ]; then
-  export CLJ_EVN=${1:-production}
+if [ -z "${CLJ_ENV}" ]; then
+  export CLJ_ENV=${1:-production}
 fi
 
 if [ -z "${PORT}" ]; then

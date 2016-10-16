@@ -31,5 +31,6 @@
       wrap-gzip))
 
 (defn -main []
-  (let [port (Integer/valueOf ^String (or (env "PORT") 3000))]
+  (let [port (Integer/valueOf ^String (or (env :port) 3000))]
+    (println "Server start at port" port)
     (run-server (site http-handler) {:port port})))
