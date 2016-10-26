@@ -5,7 +5,7 @@
             :url  "https://opensource.org/licenses/MIT"}
 
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.9.229"]
+                 [org.clojure/clojurescript "1.9.293"]
                  [org.clojure/data.generators "0.1.2"]
                  [org.clojure/core.async "0.2.395"]
                  [http-kit "2.2.0"]
@@ -14,7 +14,7 @@
                  [bk/ring-gzip "0.1.1"]
                  [ring.middleware.logger "0.5.0"]
                  [compojure "1.5.1"]
-                 [metosin/compojure-api "1.1.8"]
+                 [metosin/compojure-api "1.1.9"]
                  [prismatic/schema "1.1.3"]
                  [environ "1.1.0"]
                  [garden "1.3.2"]
@@ -25,7 +25,7 @@
                  [cheshire "5.6.3"]
                  [funcool/cats "2.0.0"]
                  [ns-tracker "0.3.0"]
-                 [bidi "2.0.12"]
+                 [bidi "2.0.13"]
                  [kibu/pushy "0.3.6"]
                  [cljs-http "0.1.42"]]
 
