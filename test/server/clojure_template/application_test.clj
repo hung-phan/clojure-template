@@ -4,7 +4,8 @@
             [clojure-template.server :refer [http-handler]]))
 
 (deftest get-todos
-  (let [response (http-handler (mock/request :get "/"))
-        body (:body response)]
-    (is (= 200 (:status response)))
-    (is (re-find #"<div id=\"app\"></div>" body))))
+  (testing "GET /"
+    (let [response (http-handler (mock/request :get "/"))
+          body (:body response)]
+      (is (= 200 (:status response)))
+      (is (re-find #"<div id=\"app\"></div>" body)))))

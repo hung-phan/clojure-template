@@ -142,12 +142,14 @@
                              [com.cemerick/piggieback "0.2.1"]
                              [org.clojure/tools.nrepl "0.2.12"]
                              [ring/ring-mock "0.3.0"]
-                             [prone "1.1.2"]]
+                             [prone "1.1.2"]
+                             [midje "1.8.3"]]
 
               :plugins      [[lein-ring "0.9.7"]
                              [lein-garden "0.2.8"]
                              [lein-figwheel "0.5.2"]
                              [lein-doo "0.1.6"]
+                             [lein-midje "3.2.1"]
                              [lein-auto "0.1.2"]]
 
               :ring         {:handler               clojure-template.server/http-handler
