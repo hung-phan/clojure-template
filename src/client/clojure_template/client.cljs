@@ -23,7 +23,8 @@
     (fn [{:keys [handler]}]
       (let [component (case handler
                         :todos [todos-component]
-                        :static-page [static-page-component])]
+                        :static-page [static-page-component]
+                        (throw (js/Error (str "Unhandle route: " handler))))]
         (render component)))
     (partial bidi/match-route app-routes)))
 
