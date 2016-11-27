@@ -13,7 +13,7 @@ In the REPL, type
 
 ```clojure
 (run)
-(browser-repl)
+(run-browser-repl)
 ```
 
 The call to `(run)` starts the Figwheel server at port 3000, which takes care of

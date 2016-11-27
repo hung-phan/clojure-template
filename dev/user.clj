@@ -1,8 +1,10 @@
 (ns user
-  (:require [clojure-template.server.main :refer [http-handler]]
-            [ring.middleware.reload :refer [wrap-reload]]
+  (:require [ring.middleware.reload :refer [wrap-reload]]
             [prone.middleware :refer [wrap-exceptions]]
-            [figwheel-sidecar.repl-api :as figwheel]))
+            [figwheel-sidecar.repl-api :as figwheel]
+            [com.stuartsierra.component :as component]
+            [clojure-template.server.main :refer [http-handler]]
+            [clojure-template.server.web-server :refer [new-dev-server]]))
 
 ;; Let Clojure warn you when it needs to reflect on types, or when it does math
 ;; on unboxed numbers. In both cases you should add type annotations to prevent
@@ -10,10 +12,18 @@
 (set! *warn-on-reflection* true)
 (set! *unchecked-math* :warn-on-boxed)
 
+;; using figwheel handler
 (def figwheel-http-handler
   (-> http-handler
       wrap-exceptions
       wrap-reload))
 
-(defn run [] (figwheel/start-figwheel!))
-(def browser-repl figwheel/cljs-repl)
+(def dev-system
+  (component/system-map
+    :server (new-dev-server)))
+
+(defn run []
+  (component/start-system dev-system))
+
+(defn run-browser-repl []
+  (figwheel/cljs-repl))
