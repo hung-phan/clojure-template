@@ -1,7 +1,6 @@
 (ns clojure-template.server.web-server
   (:require [org.httpkit.server :refer [run-server]]
-            [com.stuartsierra.component :as component]
-            [figwheel-sidecar.repl-api :as figwheel]))
+            [com.stuartsierra.component :as component]))
 
 (defrecord Server [port http-handler server]
   component/Lifecycle
@@ -18,15 +17,3 @@
 
 (defn new-server [port http-handler]
   (map->Server {:port port :http-handler http-handler}))
-
-(defrecord DevServer []
-  component/Lifecycle
-
-  (start [_]
-    (figwheel/start-figwheel!))
-
-  (stop [_]
-    (figwheel/stop-figwheel!)))
-
-(defn new-dev-server []
-  (->DevServer))

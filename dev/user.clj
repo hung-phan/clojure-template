@@ -3,8 +3,8 @@
             [prone.middleware :refer [wrap-exceptions]]
             [figwheel-sidecar.repl-api :as figwheel]
             [com.stuartsierra.component :as component]
-            [clojure-template.server.main :refer [http-handler]]
-            [clojure-template.server.web-server :refer [new-dev-server]]))
+            [web-server :refer [new-dev-server]]
+            [clojure-template.server.main :refer [http-handler]]))
 
 ;; Let Clojure warn you when it needs to reflect on types, or when it does math
 ;; on unboxed numbers. In both cases you should add type annotations to prevent

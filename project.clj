@@ -88,7 +88,7 @@
 
                {:id           "prefetch_dependencies"
                 :source-paths ["dev"]
-                :compiler     {:main          dev.prefetch-dependencies
+                :compiler     {:main          prefetch-dependencies
                                :asset-path    "js/prefetch_dependencies"
                                :output-to     "resources/public/js/prefetch_dependencies.js"
                                :output-dir    "resources/public/js/prefetch_dependencies"
