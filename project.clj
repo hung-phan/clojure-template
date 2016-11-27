@@ -29,7 +29,8 @@
                  [re-frame "0.8.0"]
                  [kibu/pushy "0.3.6"]
                  [cljs-http "0.1.42"]
-                 [cljsjs/jquery "2.2.4-0"]]
+                 [cljsjs/jquery "2.2.4-0"]
+                 [cljsjs/bootstrap "3.3.6-1"]]
 
   :plugins [[lein-cljsbuild "1.1.3"]
             [lein-environ "1.0.1"]]

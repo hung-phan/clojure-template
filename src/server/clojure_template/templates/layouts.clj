@@ -13,6 +13,4 @@
           (include-css "/css/app.css")
           [:body
            content
-           (include-js "https://code.jquery.com/jquery-2.2.4.min.js")
-           (include-js "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
            (include-js "/js/app.js")]]))
