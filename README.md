@@ -1,29 +1,36 @@
 # clojure-template
 The idea of this repository is to try out all concepts and libraries for React.js.
-Additionally, this will be the boilerplate for Om (Next) and Reagent (Reframe).
+Additionally, this will be the boilerplate Reframe.
 
 ## Development
 
 ```bash
 $ lein repl
-$ lein garden auto app_development # compile css automatically
+$ lein garden auto app_development # open another terminal and type in
 ```
 
 In the REPL, type
 
 ```clojure
-(run)
-(run-browser-repl)
+user=> (start-system)
+user=> (run-browser-repl) ;; if you want to connect to js repl
 ```
 
-The call to `(run)` starts the Figwheel server at port 3000, which takes care of
+The call to `(start-system)` starts the Figwheel server at port 3000, which takes care of
 live reloading ClojureScript code and CSS. Figwheel's server will also act as
 your app server, so requests are correctly forwarded to the http-handler you
 define.
 
-Running `(browser-repl)` starts the Weasel REPL server, and drops you into a
+Running `(run-browser-repl)` starts the Weasel REPL server, and drops you into a
 ClojureScript REPL. Evaluating expressions here will only work once you've
 loaded the page, so the browser can connect to Weasel.
+
+Additionaly, commands
+
+```clojure
+user=> (stop-system)
+user=> (restart-system)
+```
 
 ## Test
 

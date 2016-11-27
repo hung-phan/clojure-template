@@ -7,7 +7,8 @@
             [environ.core :refer [env]]
             [org.httpkit.server :refer [run-server]]
             [clojure-template.server.routing :refer [routes]]
-            [clojure-template.server.web-server :refer [new-server]])
+            [clojure-template.server.web-server :refer [new-server]]
+            [clojure-template.server.database :refer [new-database]])
   (:gen-class))
 
 (def http-handler
@@ -18,6 +19,8 @@
 
 (def prod-system
   (component/system-map
+    :database (new-database {:adapter "h2"
+                             :url     "jdbc:h2:~/database"})
     :server (new-server
               (Integer/valueOf ^String (or (env :port) 3000))
               (site http-handler))))

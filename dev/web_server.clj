@@ -6,9 +6,11 @@
   component/Lifecycle
 
   (start [_]
+    (println "Start figwheel server")
     (figwheel/start-figwheel!))
 
   (stop [_]
+    (println "Stop figwheel server")
     (figwheel/stop-figwheel!)))
 
 (defn new-dev-server []

@@ -20,6 +20,7 @@
                  [prismatic/schema "1.1.3"]
                  [org.clojure/java.jdbc "0.7.0-alpha1"]
                  [hikari-cp "1.7.5"]
+                 [com.h2database/h2 "1.4.193"]
                  [environ "1.1.0"]
                  [hiccup "1.0.5"]
                  [cheshire "5.6.3"]
