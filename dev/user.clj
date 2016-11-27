@@ -1,6 +1,7 @@
 (ns user
-  (:require [clojure-template.server]
+  (:require [clojure-template.server :refer [http-handler]]
             [ring.middleware.reload :refer [wrap-reload]]
+            [prone.middleware :refer [wrap-exceptions]]
             [figwheel-sidecar.repl-api :as figwheel]))
 
 ;; Let Clojure warn you when it needs to reflect on types, or when it does math
@@ -9,8 +10,10 @@
 (set! *warn-on-reflection* true)
 (set! *unchecked-math* :warn-on-boxed)
 
-(def http-handler (wrap-reload #'clojure-template.server/http-handler))
+(def figwheel-http-handler
+  (-> http-handler
+      wrap-exceptions
+      wrap-reload))
 
 (defn run [] (figwheel/start-figwheel!))
-
 (def browser-repl figwheel/cljs-repl)

@@ -14,11 +14,13 @@
                  [ring/ring-defaults "0.2.1"]
                  [bk/ring-gzip "0.1.1"]
                  [ring.middleware.logger "0.5.0"]
+                 [prone "1.1.4"]
                  [compojure "1.5.1"]
                  [metosin/compojure-api "1.1.9"]
                  [prismatic/schema "1.1.3"]
+                 [org.clojure/java.jdbc "0.7.0-alpha1"]
+                 [hikari-cp "1.7.5"]
                  [environ "1.1.0"]
-                 [binaryage/devtools "0.8.3"]
                  [hiccup "1.0.5"]
                  [cheshire "5.6.3"]
                  [funcool/cats "2.0.0"]
@@ -29,6 +31,7 @@
                  [re-frame "0.8.0"]
                  [kibu/pushy "0.3.6"]
                  [cljs-http "0.1.42"]
+                 [binaryage/devtools "0.8.3"]
                  [cljsjs/jquery "2.2.4-0"]
                  [cljsjs/bootstrap "3.3.6-1"]]
 
@@ -106,7 +109,7 @@
              ;; assets and API endpoints can all be accessed on the same host
              ;; and port. If you prefer a separate server process then take this
              ;; out and start the server with `lein run`.
-             :ring-handler   user/http-handler
+             :ring-handler   user/figwheel-http-handler
 
              ;; Start an nREPL server into the running figwheel process. We
              ;; don't do this, instead we do the opposite, running figwheel from
@@ -145,18 +148,13 @@
                              [com.cemerick/piggieback "0.2.1"]
                              [org.clojure/tools.nrepl "0.2.12"]
                              [ring/ring-mock "0.3.0"]
-                             [prone "1.1.4"]
                              [midje "1.8.3"]]
 
-              :plugins      [[lein-ring "0.9.7"]
-                             [lein-garden "0.2.8"]
+              :plugins      [[lein-garden "0.2.8"]
                              [lein-figwheel "0.5.2"]
                              [lein-doo "0.1.6"]
                              [lein-midje "3.2.1"]
                              [lein-auto "0.1.2"]]
-
-              :ring         {:handler               clojure-template.server/http-handler
-                             :stacktrace-middleware prone.middleware/wrap-exceptions}
 
               :source-paths ["dev"]
 

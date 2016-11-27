@@ -1,4 +1,4 @@
-(ns clojure-template.components.todos.style
+(ns clojure-template.components.todos.styles
   (:require [garden.units :refer [px]]))
 
 (def body

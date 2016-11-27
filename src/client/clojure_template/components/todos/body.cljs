@@ -24,5 +24,5 @@
    [:table.table
     [:tbody
      (map-indexed
-       (fn [index todo] ^{:key index} [body-item-component index todo])
+       (fn [index todo] ^{:key (:id todo)} [body-item-component index todo])
        todos)]]])

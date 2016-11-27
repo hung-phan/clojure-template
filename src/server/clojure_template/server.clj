@@ -14,15 +14,14 @@
             [clojure-template.routes :refer [app-routes]])
   (:gen-class))
 
-(defn render [params template]
-  (if (bidi/match-route app-routes (str "/" (:* params)))
-    (template)
-    (redirect "/404.html")))
-
 (defroutes routes
            (resources "/public")
            base-apis/apis
-           (GET "/*" [& request] (render request application-controller/index)))
+           (GET "/*" [& request]
+             ;; handle routing in client side
+             (if (bidi/match-route app-routes (str "/" (:* request)))
+               (application-controller/index)
+               (redirect "/404.html"))))
 
 (def http-handler
   (-> routes

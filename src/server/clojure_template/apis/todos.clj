@@ -1,11 +1,11 @@
 (ns clojure-template.apis.todos
-  (:require [compojure.api.sweet :refer [GET]]
+  (:require [schema.core :as s]
+            [compojure.api.sweet :refer [GET]]
             [ring.util.http-response :refer [ok]]
-            [schema.core :as s]
-            [clojure-template.models.todos :as Todo]))
+            [clojure-template.daos.todos :as TodosDAO]))
 
 (def todos-api-v1
   (GET "/todos" []
-    :return [{:text s/Str :complete s/Bool}]
+    :return [{:id s/Uuid :text s/Str :complete s/Bool}]
     :summary "get todos list"
-    (ok Todo/todos)))
+    (ok (TodosDAO/all))))
