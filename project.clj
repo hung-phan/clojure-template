@@ -40,16 +40,16 @@
 
   :min-lein-version "2.6.1"
 
-  :source-paths ["src/server" "src/client" "src/common"]
+  :source-paths ["src"]
 
-  :test-paths ["test/server"]
+  :test-paths ["test"]
 
   :clean-targets ^{:protect false} [:target-path :compile-path "resources/public/js" "resources/public/css"]
 
   :uberjar-name "clojure-template.jar"
 
   ;; Use `lein run` if you just want to start a HTTP server, without figwheel
-  :main clojure-template.server
+  :main clojure-template.server.main
 
   ;; nREPL by default starts in the :main namespace, we want to start in `user`
   ;; because that's where our development helper functions like (run) and
@@ -58,22 +58,22 @@
 
   :cljsbuild {:builds
               [{:id           "app_development"
-                :source-paths ["src/client" "src/common"]
+                :source-paths ["src"]
 
                 :figwheel     true
                 ;; Alternatively, you can configure a function to run every time figwheel reloads.
                 ;; :figwheel {:on-jsload "clojure-template.client/on-figwheel-reload"}
 
-                :compiler     {:main            clojure-template.client
+                :compiler     {:main            clojure-template.client.main
                                :asset-path      "js/app"
                                :output-to       "resources/public/js/app.js"
                                :output-dir      "resources/public/js/app"
                                :closure-defines {"goog.DEBUG" true}}}
 
                {:id           "app_production"
-                :source-paths ["src/client" "src/common"]
+                :source-paths ["src"]
                 :jar          true
-                :compiler     {:main            clojure-template.client
+                :compiler     {:main            clojure-template.client.main
                                :output-to       "resources/public/js/app.js"
                                :output-dir      "target"
                                :optimizations   :advanced
@@ -81,8 +81,8 @@
                                :closure-defines {"goog.DEBUG" false}}}
 
                {:id           "test"
-                :source-paths ["src/client" "src/common" "test/client"]
-                :compiler     {:main          clojure-template.test-runner
+                :source-paths ["src" "test"]
+                :compiler     {:main          clojure-template.client.test-runner
                                :output-to     "resources/public/js/test.js"
                                :optimizations :none}}
 
@@ -129,14 +129,14 @@
              :server-logfile "log/figwheel.log"}
 
   :garden {:builds [{:id           "app_development"
-                     :source-paths ["src/client"]
-                     :stylesheet   clojure-template.styles/app
+                     :source-paths ["src"]
+                     :stylesheet   clojure-template.client.styles/app
                      :compiler     {:output-to     "resources/public/css/app.css"
                                     :pretty-print? true}}
 
                     {:id           "app_production"
-                     :source-paths ["src/client"]
-                     :stylesheet   clojure-template.styles/app
+                     :source-paths ["src"]
+                     :stylesheet   clojure-template.client.styles/app
                      :compiler     {:output-to     "resources/public/css/app.css"
                                     :pretty-print? false}}]}
 
@@ -161,7 +161,7 @@
               :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}
 
              :uberjar
-             {:source-paths ^:replace ["src/server" "src/common"]
+             {:source-paths ^:replace ["src"]
               :prep-tasks   [["compile"]
                              ["cljsbuild" "once" "app_production"]
                              ["garden" "once" "app_production"]]

@@ -1,5 +1,5 @@
 (ns user
-  (:require [clojure-template.server :refer [http-handler]]
+  (:require [clojure-template.server.main :refer [http-handler]]
             [ring.middleware.reload :refer [wrap-reload]]
             [prone.middleware :refer [wrap-exceptions]]
             [figwheel-sidecar.repl-api :as figwheel]))

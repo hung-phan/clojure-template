@@ -37,6 +37,7 @@ To run Clojure tests, do
 
 ```bash
 $ lein test # lein auto test if you want to rerun the test for every change
+$ lein midje
 ```
 
 ## Deploying to Heroku
