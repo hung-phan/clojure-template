@@ -30,21 +30,22 @@
                        (application-controller/index)
                        (redirect "/404.html"))))
 
-          ;; initialize middleware
-          handler (if (= "development" (env :clj-env))
-                    (-> routes
-                        (wrap-defaults site-defaults)
-                        wrap-with-logger
-                        wrap-gzip
-                        wrap-exceptions
-                        wrap-reload)
+          default-handler (-> routes
+                              (wrap-defaults site-defaults)
+                              wrap-with-logger
+                              wrap-gzip)
 
-                    (-> routes
-                        (wrap-defaults site-defaults)
-                        wrap-with-logger
-                        wrap-gzip))]
+          development-handler (-> routes
+                                  (wrap-defaults site-defaults)
+                                  wrap-with-logger
+                                  wrap-gzip
+                                  wrap-exceptions
+                                  wrap-reload)]
 
-      (assoc this :handler handler)))
+      (assoc this :handler
+                  (if (= "development" (env :clj-env))
+                    development-handler
+                    default-handler))))
 
   (stop [this]
     (when handler
