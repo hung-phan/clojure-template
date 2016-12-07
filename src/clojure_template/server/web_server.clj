@@ -8,7 +8,7 @@
 
   (start [this]
     (println "Server start at port" port)
-    (let [server (run-server (site http-handler) {:port port})]
+    (let [server (run-server (site (:handler http-handler)) {:port port})]
       (assoc this :server server)))
 
   (stop [this]

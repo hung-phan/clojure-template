@@ -6,16 +6,17 @@
             [clojure-template.server.database :refer [new-database]])
   (:gen-class))
 
-(def system-dependencies {:database     (new-database {:adapter "h2"
-                                                       :url     "jdbc:h2:~/prod-database"})
-                          :web-server   (component/using (new-server (Integer/valueOf ^String (or (env :port) 3000)))
-                                                         [:http-handler])
-                          :http-handler (component/using (new-http-handler)
-                                                         [:database])})
 
-(def prod-system
-  (atom (apply component/system-map
-               (flatten (seq system-dependencies)))))
+(def system-map
+  (component/system-map
+    :database (new-database {:adapter "h2"
+                             :url     "jdbc:h2:~/prod-database"})
+    :http-handler (component/using (new-http-handler)
+                                   [:database])
+    :web-server (component/using (new-server (Integer/valueOf ^String (or (env :port) 3000)))
+                                 [:http-handler])))
+
+(def prod-system (atom system-map))
 
 (defn -main []
-  (swap! prod-system component/start))
+  (swap! prod-system component/start-system))

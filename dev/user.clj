@@ -2,7 +2,7 @@
   (:require [figwheel-sidecar.repl-api :as figwheel]
             [com.stuartsierra.component :as component]
             [figwheel :refer [new-figwheel-server]]
-            [clojure-template.server.main :refer [system-dependencies]]
+            [clojure-template.server.main :refer [system-map]]
             [clojure-template.server.database :refer [new-database]]))
 
 ;; Let Clojure warn you when it needs to reflect on types, or when it does math
@@ -11,21 +11,20 @@
 (set! *warn-on-reflection* true)
 (set! *unchecked-math* :warn-on-boxed)
 
-(def dev-system-dependencies
-  (assoc system-dependencies
-    :database (new-database {:adapter "h2"
-                             :url     "jdbc:h2:~/dev-database"})
-    :fighwheel-server (new-figwheel-server)))
+(def dev-system-map
+  (-> system-map
+      (assoc :database (new-database {:adapter "h2"
+                             :url     "jdbc:h2:~/dev-database"}))
+      (assoc :figwheel (new-figwheel-server))))
 
 (def dev-system
-  (atom (apply component/system-map
-               (flatten (seq dev-system-dependencies)))))
+  (atom dev-system-map))
 
 (defn start-system []
-  (swap! dev-system component/start))
+  (swap! dev-system component/start-system))
 
 (defn stop-system []
-  (swap! dev-system component/stop))
+  (swap! dev-system component/stop-system))
 
 (defn restart-system []
   (do
