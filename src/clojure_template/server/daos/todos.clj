@@ -10,3 +10,6 @@
   (repeatedly 10 #(->Todo (generators/uuid) (generators/string) (generators/boolean))))
 
 (defn all [] todos)
+
+(defn new-todos-dao [database]
+  {:all (fn [] todos)})

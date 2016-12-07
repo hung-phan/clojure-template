@@ -1,29 +1,21 @@
 (ns clojure-template.server.main
-  (:require [compojure.handler :refer [site]]
-            [com.stuartsierra.component :as component]
-            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
-            [ring.middleware.gzip :refer [wrap-gzip]]
-            [ring.middleware.logger :refer [wrap-with-logger]]
+  (:require [com.stuartsierra.component :as component]
             [environ.core :refer [env]]
-            [org.httpkit.server :refer [run-server]]
-            [clojure-template.server.routing :refer [routes]]
+            [clojure-template.server.http-handler :refer [new-http-handler]]
             [clojure-template.server.web-server :refer [new-server]]
             [clojure-template.server.database :refer [new-database]])
   (:gen-class))
 
-(def http-handler
-  (-> routes
-      (wrap-defaults site-defaults)
-      wrap-with-logger
-      wrap-gzip))
+(def system-dependencies {:database     (new-database {:adapter "h2"
+                                                       :url     "jdbc:h2:~/prod-database"})
+                          :web-server   (component/using (new-server (Integer/valueOf ^String (or (env :port) 3000)))
+                                                         [:http-handler])
+                          :http-handler (component/using (new-http-handler)
+                                                         [:database])})
 
 (def prod-system
-  (component/system-map
-    :database (new-database {:adapter "h2"
-                             :url     "jdbc:h2:~/database"})
-    :server (new-server
-              (Integer/valueOf ^String (or (env :port) 3000))
-              (site http-handler))))
+  (atom (apply component/system-map
+               (flatten (seq system-dependencies)))))
 
 (defn -main []
-  (component/start-system prod-system))
+  (swap! prod-system component/start))

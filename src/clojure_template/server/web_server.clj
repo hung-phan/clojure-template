@@ -1,5 +1,6 @@
 (ns clojure-template.server.web-server
-  (:require [org.httpkit.server :refer [run-server]]
+  (:require [compojure.handler :refer [site]]
+            [org.httpkit.server :refer [run-server]]
             [com.stuartsierra.component :as component]))
 
 (defrecord Server [port http-handler server]
@@ -7,13 +8,13 @@
 
   (start [this]
     (println "Server start at port" port)
-    (let [httpkit-server (run-server http-handler {:port port})
-          server (:server (meta httpkit-server))]
+    (let [server (run-server (site http-handler) {:port port})]
       (assoc this :server server)))
 
-  (stop [_]
+  (stop [this]
     (when server
-      (.stop server))))
+      (server)
+      (assoc this :server nil))))
 
-(defn new-server [port http-handler]
-  (map->Server {:port port :http-handler http-handler}))
+(defn new-server [port]
+  (map->Server {:port port}))

@@ -1,10 +1,8 @@
 (ns user
-  (:require [ring.middleware.reload :refer [wrap-reload]]
-            [prone.middleware :refer [wrap-exceptions]]
-            [figwheel-sidecar.repl-api :as figwheel]
+  (:require [figwheel-sidecar.repl-api :as figwheel]
             [com.stuartsierra.component :as component]
-            [web-server :refer [new-dev-server]]
-            [clojure-template.server.main :refer [http-handler]]
+            [figwheel :refer [new-figwheel-server]]
+            [clojure-template.server.main :refer [system-dependencies]]
             [clojure-template.server.database :refer [new-database]]))
 
 ;; Let Clojure warn you when it needs to reflect on types, or when it does math
@@ -13,23 +11,21 @@
 (set! *warn-on-reflection* true)
 (set! *unchecked-math* :warn-on-boxed)
 
-;; using figwheel handler
-(def figwheel-http-handler
-  (-> http-handler
-      wrap-exceptions
-      wrap-reload))
+(def dev-system-dependencies
+  (assoc system-dependencies
+    :database (new-database {:adapter "h2"
+                             :url     "jdbc:h2:~/dev-database"})
+    :fighwheel-server (new-figwheel-server)))
 
 (def dev-system
-  (component/system-map
-    :database (new-database {:adapter "h2"
-                             :url     "jdbc:h2:~/database"})
-    :server (new-dev-server)))
+  (atom (apply component/system-map
+               (flatten (seq dev-system-dependencies)))))
 
 (defn start-system []
-  (component/start-system dev-system))
+  (swap! dev-system component/start))
 
 (defn stop-system []
-  (component/stop-system dev-system))
+  (swap! dev-system component/stop))
 
 (defn restart-system []
   (do
