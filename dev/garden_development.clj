@@ -1,7 +1,6 @@
 (ns garden-development
   (:require [com.stuartsierra.component :as component]
             [suspendable.core :as suspendable]
-            [clojure.pprint :refer [pprint]]
             [clojure.java.io :as io]
             [garden.core]
             [me.raynes.fs :as fs]))
@@ -38,6 +37,7 @@
 (defrecord GardenServer [builds]
   component/Lifecycle
   (start [component]
+    (println "Start garden for builds" builds)
     (compile-builds builds)
     component)
   (stop [component]
