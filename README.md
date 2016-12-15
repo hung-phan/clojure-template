@@ -6,7 +6,6 @@ Additionally, this will be the boilerplate Reframe.
 
 ```bash
 $ lein repl
-$ lein garden auto app_development # open another terminal and type in
 ```
 
 In the REPL, type
