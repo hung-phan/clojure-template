@@ -3,18 +3,21 @@
             [org.httpkit.server :refer [run-server]]
             [com.stuartsierra.component :as component]))
 
-(defrecord Server [port http-handler server]
+(defrecord Server [port http-handler stop-server-callback]
   component/Lifecycle
 
   (start [this]
-    (println "Server start at port" port)
-    (let [server (run-server (site (:handler http-handler)) {:port port})]
-      (assoc this :server server)))
+    (println "Web server start at port" port)
+
+    (let [stop-server-callback (run-server (site (:handler http-handler)) {:port port})]
+      (assoc this :stop-server-callback stop-server-callback)))
 
   (stop [this]
-    (when server
-      (server)
-      (assoc this :server nil))))
+    (when stop-server-callback
+      (println "Web server stop")
+
+      (stop-server-callback)
+      (assoc this :stop-server-callback nil))))
 
 (defn new-server [port]
   (map->Server {:port port}))

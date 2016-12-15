@@ -1,6 +1,7 @@
 (ns clojure-template.server.http-handler
   (:require [compojure.core :refer [ANY GET PUT POST DELETE routes]]
             [compojure.route :refer [resources not-found]]
+            [compojure.api.middleware :refer [wrap-components]]
             [ring.util.response :refer [redirect]]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.gzip :refer [wrap-gzip]]
@@ -15,15 +16,17 @@
             [clojure-template.common.routes :refer [app-routes]]))
 
 
-(defrecord HTTPHandler [database handler]
+(defrecord HTTPHandler [todos-dao handler]
   component/Lifecycle
 
   (start [this]
     (let [routes (routes
                    ;; resources
                    (resources "/public")
+
                    ;; apis
                    base-apis/apis
+
                    ;; handle routing in client side
                    (GET "/*" [& request]
                      (if (bidi/match-route app-routes (str "/" (:* request)))
@@ -32,20 +35,17 @@
 
           default-handler (-> routes
                               (wrap-defaults site-defaults)
+                              (wrap-components {:todos-dao todos-dao})
                               wrap-with-logger
                               wrap-gzip)
 
-          development-handler (-> routes
-                                  (wrap-defaults site-defaults)
-                                  wrap-with-logger
-                                  wrap-gzip
+          development-handler (-> default-handler
                                   wrap-exceptions
                                   wrap-reload)]
 
-      (assoc this :handler
-                  (if (= "development" (env :clj-env))
-                    development-handler
-                    default-handler))))
+      (assoc this :handler (if (= "development" (env :clj-env))
+                             development-handler
+                             default-handler))))
 
   (stop [this]
     (when handler

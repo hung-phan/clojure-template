@@ -1,9 +1,10 @@
 (ns clojure-template.server.main
   (:require [com.stuartsierra.component :as component]
             [environ.core :refer [env]]
+            [clojure-template.server.database :refer [new-database]]
+            [clojure-template.server.daos.todos :refer [new-todos-dao]]
             [clojure-template.server.http-handler :refer [new-http-handler]]
-            [clojure-template.server.web-server :refer [new-server]]
-            [clojure-template.server.database :refer [new-database]])
+            [clojure-template.server.web-server :refer [new-server]])
   (:gen-class))
 
 
@@ -11,8 +12,10 @@
   (component/system-map
     :database (new-database {:adapter "h2"
                              :url     "jdbc:h2:~/prod-database"})
+    :todos-dao (component/using (new-todos-dao)
+                                [:database])
     :http-handler (component/using (new-http-handler)
-                                   [:database])
+                                   [:todos-dao])
     :web-server (component/using (new-server (Integer/valueOf ^String (or (env :port) 3000)))
                                  [:http-handler])))
 

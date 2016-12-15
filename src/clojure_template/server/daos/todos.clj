@@ -1,15 +1,23 @@
 (ns clojure-template.server.daos.todos
   (:require [schema.core :as s]
-            [clojure.data.generators :as generators]))
+            [clojure.data.generators :as generators]
+            [clojure-template.server.daos.protocol :as protocol]))
 
 (s/defrecord Todo [id :- s/Uuid
                    text :- s/Str
                    complete :- s/Bool])
 
 (def ^:private todos
-  (repeatedly 10 #(->Todo (generators/uuid) (generators/string) (generators/boolean))))
+  (repeatedly 10 #(->Todo
+                    (generators/uuid)
+                    (generators/string)
+                    (generators/boolean))))
 
-(defn all [] todos)
+(defrecord TodosDao [database]
+  protocol/DAO
 
-(defn new-todos-dao [database]
-  {:all (fn [] todos)})
+  (all [_]
+    todos))
+
+(defn new-todos-dao []
+  (map->TodosDao {}))
