@@ -9,6 +9,8 @@
                  [org.clojure/data.generators "0.1.2"]
                  [org.clojure/core.async "0.2.395"]
                  [com.stuartsierra/component "0.3.1"]
+                 [suspendable "0.1.1"]
+                 [me.raynes/fs "1.4.6"]
                  [http-kit "2.2.0"]
                  [ring "1.5.0"]
                  [ring/ring-defaults "0.2.1"]
@@ -58,7 +60,7 @@
   :repl-options {:init-ns user}
 
   :cljsbuild {:builds
-              [{:id           "app_production"
+              [{:id           "app"
                 :source-paths ["src"]
                 :jar          true
                 :compiler     {:main            clojure-template.client.main
@@ -82,13 +84,7 @@
                                :output-dir    "resources/public/js/prefetch_dependencies"
                                :optimizations :none}}]}
 
-  :garden {:builds [{:id           "app_development"
-                     :source-paths ["src"]
-                     :stylesheet   clojure-template.client.styles/app
-                     :compiler     {:output-to     "resources/public/css/app.css"
-                                    :pretty-print? true}}
-
-                    {:id           "app_production"
+  :garden {:builds [{:id           "app"
                      :source-paths ["src"]
                      :stylesheet   clojure-template.client.styles/app
                      :compiler     {:output-to     "resources/public/css/app.css"
@@ -117,8 +113,8 @@
              :uberjar
              {:source-paths ^:replace ["src"]
               :prep-tasks   [["compile"]
-                             ["cljsbuild" "once" "app_production"]
-                             ["garden" "once" "app_production"]]
+                             ["cljsbuild" "once" "app"]
+                             ["garden" "once" "app"]]
               :hooks        []
               :omit-source  true
               :aot          :all}})

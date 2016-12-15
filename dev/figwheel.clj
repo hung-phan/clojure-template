@@ -32,7 +32,8 @@
 
    :server-logfile "log/figwheel.log"
 
-   :builds         [{:id           "app_development"
+   ;; look for the configuration of cljsbuild in project.clj
+   :builds         [{:id           "app"
                      :source-paths ["src"]
                      :figwheel     true
                      ;; Alternatively, you can configure a function to run every time figwheel reloads.

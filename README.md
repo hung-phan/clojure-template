@@ -13,7 +13,7 @@ In the REPL, type
 
 ```clojure
 user=> (start-system)
-user=> (run-browser-repl) ;; if you want to connect to js repl
+user=> (start-browser-repl) ;; if you want to connect to js repl
 ```
 
 The call to `(start-system)` starts the Figwheel server at port 3000, which takes care of
