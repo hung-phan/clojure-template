@@ -37,7 +37,7 @@
 (defrecord GardenServer [builds]
   component/Lifecycle
   (start [component]
-    (println "Start garden for builds" builds)
+    (println "Start garden for builds" (map #(:id %) builds))
     (compile-builds builds)
     component)
   (stop [component]
