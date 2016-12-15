@@ -16,7 +16,7 @@
             [clojure-template.common.routes :refer [app-routes]]))
 
 
-(defrecord HTTPHandler [todos-dao handler]
+(defrecord HTTPHandler [database handler]
   component/Lifecycle
 
   (start [this]
@@ -35,7 +35,7 @@
 
           default-handler (-> routes
                               (wrap-defaults site-defaults)
-                              (wrap-components {:todos-dao todos-dao})
+                              (wrap-components {:database database})
                               wrap-with-logger
                               wrap-gzip)
 

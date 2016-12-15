@@ -1,7 +1,6 @@
 (ns clojure-template.server.daos.todos
   (:require [schema.core :as s]
-            [clojure.data.generators :as generators]
-            [clojure-template.server.daos.protocol :as protocol]))
+            [clojure.data.generators :as generators]))
 
 (s/defrecord Todo [id :- s/Uuid
                    text :- s/Str
@@ -13,11 +12,5 @@
                     (generators/string)
                     (generators/boolean))))
 
-(defrecord TodosDao [database]
-  protocol/DAO
-
-  (all [_]
-    todos))
-
-(defn new-todos-dao []
-  (map->TodosDao {}))
+(defn all [database]
+  todos)
