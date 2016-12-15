@@ -2,7 +2,6 @@
   (:require [figwheel-sidecar.repl-api :as figwheel]
             [com.stuartsierra.component :as component]
             [figwheel :refer [new-figwheel-server]]
-            [garden-development :refer [new-garden-server]]
             [clojure-template.server.main :refer [system-map]]
             [clojure-template.server.database :refer [new-database]]))
 
@@ -16,8 +15,7 @@
   (-> system-map
       (assoc :database (new-database {:adapter "h2"
                                       :url     "jdbc:h2:~/dev-database"}))
-      (assoc :figwheel (new-figwheel-server))
-      (assoc :garden (new-garden-server))))
+      (assoc :figwheel (new-figwheel-server))))
 
 (def dev-system
   (atom dev-system-map))

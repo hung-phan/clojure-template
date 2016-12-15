@@ -84,7 +84,13 @@
                                :output-dir    "resources/public/js/prefetch_dependencies"
                                :optimizations :none}}]}
 
-  :garden {:builds [{:id           "app"
+  :garden {:builds [{:id           "app_development"
+                     :source-paths ["src"]
+                     :stylesheet   clojure-template.client.styles/app
+                     :compiler     {:output-to     "resources/public/css/app.css"
+                                    :pretty-print? true}}
+
+                    {:id           "app_production"
                      :source-paths ["src"]
                      :stylesheet   clojure-template.client.styles/app
                      :compiler     {:output-to     "resources/public/css/app.css"
@@ -114,7 +120,7 @@
              {:source-paths ^:replace ["src"]
               :prep-tasks   [["compile"]
                              ["cljsbuild" "once" "app"]
-                             ["garden" "once" "app"]]
+                             ["garden" "once" "app_production"]]
               :hooks        []
               :omit-source  true
               :aot          :all}})
