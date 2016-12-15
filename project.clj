@@ -10,7 +10,6 @@
                  [org.clojure/core.async "0.2.395"]
                  [com.stuartsierra/component "0.3.1"]
                  [suspendable "0.1.1"]
-                 [me.raynes/fs "1.4.6"]
                  [http-kit "2.2.0"]
                  [ring "1.5.0"]
                  [ring/ring-defaults "0.2.1"]
