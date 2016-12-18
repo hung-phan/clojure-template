@@ -34,15 +34,36 @@ user=> (restart-system)
 
 ## Migration and rollback
 
+### Development
+Run `(start-system)`, then:
+
 ```clojure
-user=> (-> dev-system deref :database (.migrate)) ;; this requires to run (start-system) first
-user=> (-> dev-system deref :database (.rollback)) ;; this requires to run (start-system) first
+user=> (-> dev-system deref :database (.migrate))
+user=> (-> dev-system deref :database (.rollback))
+```
+
+### Production
+Run `(swap! prod-system component/start-system)`, then:
+
+```clojure
+user=> (-> prod-system deref :database (.migrate))
+user=> (-> prod-system deref :database (.rollback))
 ```
 
 ## Seed data
 
+### Development
+Run `(start-system)`, then:
+
 ```clojure
-user=> (-> dev-system deref :database seed-todos) ;; this requires to run (start-system) first
+user=> (-> dev-system deref :database seed-todos)
+```
+
+### Production
+Run `(swap! prod-system component/start-system)`, then:
+
+```clojure
+user=> (-> prod-system deref :database seed-todos)
 ```
 
 ## Test

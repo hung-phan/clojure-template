@@ -10,7 +10,7 @@
 (def system-map
   (component/system-map
     :database (new-database {:adapter "h2"
-                             :url     "jdbc:h2:~/prod-database"})
+                             :url     "jdbc:h2:/tmp/prod-database"})
     :http-handler (component/using (new-http-handler)
                                    [:database])
     :web-server (component/using (new-server (Integer/valueOf ^String (or (env :port) 3000)))

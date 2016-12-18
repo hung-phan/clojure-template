@@ -3,7 +3,7 @@
             [com.stuartsierra.component :as component]
             [figwheel :refer [new-figwheel-server]]
             [seed-data :refer [seed-todos]]
-            [clojure-template.server.main :refer [system-map]]
+            [clojure-template.server.main :refer [system-map prod-system]]
             [clojure-template.server.database :refer [new-database]]))
 
 ;; Let Clojure warn you when it needs to reflect on types, or when it does math
@@ -15,7 +15,7 @@
 (def dev-system-map
   (-> system-map
       (assoc :database (new-database {:adapter "h2"
-                                      :url     "jdbc:h2:~/dev-database"}))
+                                      :url     "jdbc:h2:/tmp/dev-database"}))
       (assoc :figwheel (new-figwheel-server))))
 
 (def dev-system
