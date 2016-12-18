@@ -6,7 +6,7 @@
 
 (def todos-api-v1
   (GET "/todos" []
-    :return [{:id s/Uuid :text s/Str :complete s/Bool}]
+    :return [{:id s/Num :text s/Str :complete s/Bool}]
     :summary "get todos list"
     :components [database]
     (ok (todos-dao/all database))))

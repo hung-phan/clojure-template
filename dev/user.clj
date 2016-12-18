@@ -2,6 +2,7 @@
   (:require [figwheel-sidecar.repl-api :as figwheel]
             [com.stuartsierra.component :as component]
             [figwheel :refer [new-figwheel-server]]
+            [seed-data :refer [seed-todos]]
             [clojure-template.server.main :refer [system-map]]
             [clojure-template.server.database :refer [new-database]]))
 

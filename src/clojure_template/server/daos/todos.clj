@@ -1,16 +1,9 @@
 (ns clojure-template.server.daos.todos
-  (:require [schema.core :as s]
-            [clojure.data.generators :as generators]))
-
-(s/defrecord Todo [id :- s/Uuid
-                   text :- s/Str
-                   complete :- s/Bool])
-
-(def ^:private todos
-  (repeatedly 10 #(->Todo
-                    (generators/uuid)
-                    (generators/string)
-                    (generators/boolean))))
+  (:require [clojure.java.jdbc :as jdbc]
+            [clojure-template.server.models.todos :refer [map->Todo]]))
 
 (defn all [database]
-  todos)
+  (jdbc/with-db-connection
+    [conn {:datasource (:datasource database)}]
+    (for [row (jdbc/query conn ["SELECT id, text, complete from todos;"])]
+      (map->Todo row))))

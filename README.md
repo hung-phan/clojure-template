@@ -32,6 +32,19 @@ user=> (stop-system)
 user=> (restart-system)
 ```
 
+## Migration and rollback
+
+```clojure
+user=> (-> dev-system deref :database (.migrate)) ;; this requires to run (start-system) first
+user=> (-> dev-system deref :database (.rollback)) ;; this requires to run (start-system) first
+```
+
+## Seed data
+
+```clojure
+user=> (-> dev-system deref :database seed-todos) ;; this requires to run (start-system) first
+```
+
 ## Test
 
 To run Clojurescript tests, do

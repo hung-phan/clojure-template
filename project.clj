@@ -11,6 +11,7 @@
                  [com.stuartsierra/component "0.3.1"]
                  [http-kit "2.2.0"]
                  [ring "1.5.0"]
+                 [ragtime "0.6.0"]
                  [ring/ring-defaults "0.2.1"]
                  [bk/ring-gzip "0.1.1"]
                  [ring.middleware.logger "0.5.0"]
