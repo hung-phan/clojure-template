@@ -14,8 +14,22 @@
 
 (def dev-system-map
   (-> system-map
-      (assoc :database (new-database {:adapter "h2"
-                                      :url     "jdbc:h2:/tmp/dev-database"}))
+      (assoc :database (new-database {:auto-commit        true
+                                      :read-only          false
+                                      :connection-timeout 30000
+                                      :validation-timeout 5000
+                                      :idle-timeout       600000
+                                      :max-lifetime       1800000
+                                      :minimum-idle       10
+                                      :maximum-pool-size  10
+                                      :pool-name          "db-pool"
+                                      :adapter            "postgresql"
+                                      :username           "developer"
+                                      :password           "developer"
+                                      :database-name      "postgres"
+                                      :server-name        "localhost"
+                                      :port-number        5432
+                                      :register-mbeans    false}))
       (assoc :figwheel (new-figwheel-server))))
 
 (def dev-system

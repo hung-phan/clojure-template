@@ -3,8 +3,10 @@ The idea of this repository is to try out all concepts and libraries for React.j
 Additionally, this will be the boilerplate Reframe.
 
 ## Development
+Require docker and docker-compose
 
 ```bash
+$ docker-compose up -d
 $ lein repl
 $ lein garden auto app_development # open another terminal and type in
 ```
@@ -112,13 +114,6 @@ $ ./scripts/start
 
 Now your app is running at
 [http://localhost:3000](http://localhost:3000) in production mode.
-
-## Docker container
-
-```bash
-$ docker-compose build
-$ docker-compose up
-```
 
 Access http://localhost:3000 to see the application
 
