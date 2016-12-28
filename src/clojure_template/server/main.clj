@@ -9,8 +9,23 @@
 
 (def system-map
   (component/system-map
-    :database (new-database {:adapter "h2"
-                             :url     "jdbc:h2:/tmp/prod-database"})
+    ;; replace this configuration with production configuration
+    :database (new-database {:auto-commit        true
+                             :read-only          false
+                             :connection-timeout 30000
+                             :validation-timeout 5000
+                             :idle-timeout       600000
+                             :max-lifetime       1800000
+                             :minimum-idle       10
+                             :maximum-pool-size  10
+                             :pool-name          "db-pool"
+                             :adapter            "postgresql"
+                             :username           "developer"
+                             :password           "developer"
+                             :database-name      "postgres"
+                             :server-name        "localhost"
+                             :port-number        5432
+                             :register-mbeans    false})
     :http-handler (component/using (new-http-handler)
                                    [:database])
     :web-server (component/using (new-server (Integer/valueOf ^String (or (env :port) 3000)))

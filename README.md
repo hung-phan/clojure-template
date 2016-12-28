@@ -34,9 +34,8 @@ user=> (stop-system)
 user=> (restart-system)
 ```
 
-## Migration and rollback
+### Migration and rollback
 
-### Development
 Run `(start-system)`, then:
 
 ```clojure
@@ -44,7 +43,19 @@ user=> (-> dev-system deref :database (.migrate))
 user=> (-> dev-system deref :database (.rollback))
 ```
 
-### Production
+### Seed data
+Run `(start-system)`, then:
+
+```clojure
+user=> (-> dev-system deref :database seed-todos)
+```
+
+## Production
+```bash
+$ docker-compose -f docker-compose.prod.yml up
+```
+
+### Migration and rollback
 Run `(swap! prod-system component/start-system)`, then:
 
 ```clojure
@@ -52,16 +63,7 @@ user=> (-> prod-system deref :database (.migrate))
 user=> (-> prod-system deref :database (.rollback))
 ```
 
-## Seed data
-
-### Development
-Run `(start-system)`, then:
-
-```clojure
-user=> (-> dev-system deref :database seed-todos)
-```
-
-### Production
+### Seed data
 Run `(swap! prod-system component/start-system)`, then:
 
 ```clojure
