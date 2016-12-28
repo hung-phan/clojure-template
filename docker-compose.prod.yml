@@ -7,6 +7,8 @@ services:
       - "3000:3000"
     depends_on:
       - postgres
+    links:
+      - "postgres:database"
   postgres:
     container_name: prod_postgres
     image: postgres:9.6.1
@@ -17,7 +19,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - data_postgres:/var/lib/postgresql/data
+      - prod_postgres:/var/lib/postgresql/data
 volumes:
-  data_postgres:
+  prod_postgres:
     driver: local

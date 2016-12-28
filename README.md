@@ -56,18 +56,22 @@ $ docker-compose -f docker-compose.prod.yml up
 ```
 
 ### Migration and rollback
-Run `(swap! prod-system component/start-system)`, then:
+```bash
+$ lein repl
+```
+
+then
 
 ```clojure
-user=> (-> prod-system deref :database (.migrate))
-user=> (-> prod-system deref :database (.rollback))
+user=> (def database (component/start (:database @prod-system)))
+user=> (.migrate database)
+user=> (.rollback database)
 ```
 
 ### Seed data
-Run `(swap! prod-system component/start-system)`, then:
-
 ```clojure
-user=> (-> prod-system deref :database seed-todos)
+user=> (def database (component/start (:database @prod-system)))
+user=> (seed-todos database)
 ```
 
 ## Test

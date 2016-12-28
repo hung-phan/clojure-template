@@ -12,9 +12,6 @@ RUN lein cljsbuild once prefetch_dependencies
 
 COPY . .
 
-ENV CLJ_ENV=production \
-    PORT=3000
-
 RUN ./scripts/build
 
 CMD ["./scripts/start"]

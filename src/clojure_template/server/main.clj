@@ -23,7 +23,7 @@
                              :username           "developer"
                              :password           "developer"
                              :database-name      "postgres"
-                             :server-name        "localhost"
+                             :server-name        "database"
                              :port-number        5432
                              :register-mbeans    false})
     :http-handler (component/using (new-http-handler)

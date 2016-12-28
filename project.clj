@@ -8,10 +8,10 @@
                  [org.clojure/clojurescript "1.9.293"]
                  [org.clojure/data.generators "0.1.2"]
                  [org.clojure/core.async "0.2.395"]
-                 [com.stuartsierra/component "0.3.1"]
+                 [com.stuartsierra/component "0.3.2"]
                  [http-kit "2.2.0"]
                  [ring "1.5.0"]
-                 [ragtime "0.6.0"]
+                 [ragtime "0.6.3"]
                  [ring/ring-defaults "0.2.1"]
                  [bk/ring-gzip "0.1.1"]
                  [ring.middleware.logger "0.5.0"]
@@ -21,16 +21,16 @@
                  [prismatic/schema "1.1.3"]
                  [org.clojure/java.jdbc "0.7.0-alpha1"]
                  [hikari-cp "1.7.5"]
-                 [org.postgresql/postgresql "9.4.1212.jre7"]
+                 [org.postgresql/postgresql "9.4.1212"]
                  [environ "1.1.0"]
                  [hiccup "1.0.5"]
                  [cheshire "5.6.3"]
                  [funcool/cats "2.0.0"]
                  [ns-tracker "0.3.1"]
-                 [bidi "2.0.14"]
+                 [bidi "2.0.15"]
                  [garden "1.3.2"]
                  [reagent "0.6.0"]
-                 [re-frame "0.8.0"]
+                 [re-frame "0.9.1"]
                  [kibu/pushy "0.3.6"]
                  [cljs-http "0.1.42"]
                  [binaryage/devtools "0.8.3"]
@@ -59,7 +59,7 @@
   :repl-options {:init-ns user}
 
   :cljsbuild {:builds
-              [{:id           "app"
+              [{:id           "app_production"
                 :source-paths ["src"]
                 :jar          true
                 :compiler     {:main            clojure-template.client.main
@@ -118,7 +118,7 @@
              :uberjar
              {:source-paths ^:replace ["src"]
               :prep-tasks   [["compile"]
-                             ["cljsbuild" "once" "app"]
+                             ["cljsbuild" "once" "app_production"]
                              ["garden" "once" "app_production"]]
               :hooks        []
               :omit-source  true
