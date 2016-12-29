@@ -76,18 +76,11 @@ user=> (seed-todos database)
 
 ## Test
 
-To run Clojurescript tests, do
-
-```bash
-$ lein doo phantom
-```
-
-To run Clojure tests, do
-
 ```bash
 $ docker-compose -f docker-compose.test.yml -d up
 $ lein test # lein auto test if you want to rerun the test for every change
 $ lein midje
+$ lein doo phantom # run clojurescript tests
 $ docker-compose -f docker-compose.test.yml down
 ```
 
