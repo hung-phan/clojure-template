@@ -2,5 +2,6 @@
   (:require-macros [cljs.test :refer :all])
   (:require [cljs.test]))
 
-(testing "Example test"
-  (is (= 1 1)))
+(deftest core-test
+  (testing "Example test"
+    (is (= 1 1))))
