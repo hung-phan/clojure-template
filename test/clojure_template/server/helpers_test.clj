@@ -1,4 +1,4 @@
-(ns clojure-template.server.helpers
+(ns clojure-template.server.helpers_test
   (:require [cheshire.core :refer :all]))
 
 (defn parse-body [resp]

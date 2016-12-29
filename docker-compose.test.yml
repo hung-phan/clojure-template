@@ -6,11 +6,6 @@ services:
     environment:
       - POSTGRES_USER=developer
       - POSTGRES_PASSWORD=developer
-      - POSTGRES_DB=postgres
+      - POSTGRES_DB=test_postgres
     ports:
       - "5432:5432"
-    volumes:
-      - dev_postgres:/var/lib/postgresql/data
-volumes:
-  dev_postgres:
-    driver: local

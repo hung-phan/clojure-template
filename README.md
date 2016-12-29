@@ -85,8 +85,10 @@ $ lein doo phantom
 To run Clojure tests, do
 
 ```bash
+$ docker-compose -f docker-compose.test.yml -d up
 $ lein test # lein auto test if you want to rerun the test for every change
 $ lein midje
+$ docker-compose -f docker-compose.test.yml down
 ```
 
 ## Deploying to Heroku
