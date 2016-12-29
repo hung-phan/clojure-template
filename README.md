@@ -80,7 +80,7 @@ user=> (seed-todos database)
 $ docker-compose -f docker-compose.test.yml -d up
 $ lein test # lein auto test if you want to rerun the test for every change
 $ lein midje
-$ lein doo phantom # run clojurescript tests
+$ lein doo phantom # run clojurescript tests, requires phantomjs
 $ docker-compose -f docker-compose.test.yml down
 ```
 
