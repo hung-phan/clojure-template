@@ -23,6 +23,4 @@
   [:div.col-md-12.todos-body
    [:table.table
     [:tbody
-     (map-indexed
-       (fn [index todo] ^{:key (:id todo)} [body-item-component index todo])
-       todos)]]])
+     (map-indexed (fn [index todo] ^{:key (:id todo)} [body-item-component index todo]) todos)]]])
