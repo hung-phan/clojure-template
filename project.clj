@@ -33,9 +33,7 @@
                  [re-frame "0.9.1"]
                  [kibu/pushy "0.3.6"]
                  [cljs-http "0.1.42"]
-                 [binaryage/devtools "0.8.3"]
-                 [cljsjs/jquery "2.2.4-0"]
-                 [cljsjs/bootstrap "3.3.6-1"]]
+                 [binaryage/devtools "0.8.3"]]
 
   :plugins [[lein-cljsbuild "1.1.3"]
             [lein-environ "1.0.1"]]
