@@ -17,7 +17,4 @@ pom.xml
 pom.xml.asc
 .idea/
 cookies
-.gems
-.ruby-version
-.rbenv-gemsets
 clojure-template.iml
