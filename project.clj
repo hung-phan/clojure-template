@@ -5,7 +5,7 @@
             :url  "https://opensource.org/licenses/MIT"}
 
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.9.495"]
+                 [org.clojure/clojurescript "1.9.521"]
                  [org.clojure/data.generators "0.1.2"]
                  [org.clojure/core.async "0.3.442"]
                  [com.stuartsierra/component "0.3.2"]
@@ -18,22 +18,22 @@
                  [prone "1.1.4"]
                  [compojure "1.5.2"]
                  [metosin/compojure-api "1.1.10"]
-                 [prismatic/schema "1.1.4"]
+                 [prismatic/schema "1.1.5"]
                  [org.clojure/java.jdbc "0.7.0-alpha1"]
                  [hikari-cp "1.7.5"]
                  [org.postgresql/postgresql "42.0.0"]
                  [environ "1.1.0"]
                  [hiccup "1.0.5"]
-                 [cheshire "5.7.0"]
-                 [funcool/cats "2.0.0"]
+                 [cheshire "5.7.1"]
+                 [funcool/cats "2.1.0"]
                  [ns-tracker "0.3.1"]
-                 [bidi "2.0.16"]
+                 [bidi "2.0.17"]
                  [garden "1.3.2"]
                  [reagent "0.6.1"]
                  [re-frame "0.9.2"]
                  [kibu/pushy "0.3.7"]
-                 [cljs-http "0.1.42"]
-                 [binaryage/devtools "0.9.2"]]
+                 [cljs-http "0.1.43"]
+                 [binaryage/devtools "0.9.4"]]
 
   :plugins [[lein-cljsbuild "1.1.3"]
             [lein-environ "1.0.1"]]
@@ -96,10 +96,10 @@
   :doo {:build "test"}
 
   :profiles {:dev
-             {:dependencies [[figwheel "0.5.9"]
-                             [figwheel-sidecar "0.5.9"]
+             {:dependencies [[figwheel "0.5.10"]
+                             [figwheel-sidecar "0.5.10"]
                              [com.cemerick/piggieback "0.2.1"]
-                             [org.clojure/tools.nrepl "0.2.12"]
+                             [org.clojure/tools.nrepl "0.2.13"]
                              [ring/ring-mock "0.3.0"]
                              [midje "1.8.3"]]
 
