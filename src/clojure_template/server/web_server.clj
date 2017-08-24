@@ -1,6 +1,5 @@
 (ns clojure-template.server.web-server
-  (:require [compojure.handler :refer [site]]
-            [org.httpkit.server :refer [run-server]]
+  (:require [aleph.http :refer [start-server]]
             [com.stuartsierra.component :as component]))
 
 (defrecord Server [port http-handler stop-server-callback]
@@ -9,7 +8,7 @@
   (start [this]
     (println "Web server start at port" port)
 
-    (let [stop-server-callback (run-server (site (:handler http-handler)) {:port port})]
+    (let [stop-server-callback (start-server (:handler http-handler) {:port port})]
       (assoc this :stop-server-callback stop-server-callback)))
 
   (stop [this]
