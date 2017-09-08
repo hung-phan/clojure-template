@@ -19,7 +19,7 @@
                  [compojure "1.6.0"]
                  [metosin/compojure-api "1.1.11"]
                  [prismatic/schema "1.1.6"]
-                 [org.clojure/java.jdbc "0.7.0"]
+                 [org.clojure/java.jdbc "0.7.1"]
                  [hikari-cp "1.7.6"]
                  [org.postgresql/postgresql "42.1.4"]
                  [environ "1.1.0"]
@@ -31,7 +31,7 @@
                  [garden "1.3.2"]
                  [reagent "0.7.0"]
                  [re-frame "0.10.1"]
-                 [kibu/pushy "0.3.7"]
+                 [kibu/pushy "0.3.8"]
                  [cljs-http "0.1.43"]
                  [binaryage/devtools "0.9.4"]]
 
