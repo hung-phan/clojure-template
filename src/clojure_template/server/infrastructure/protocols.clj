@@ -1,4 +1,4 @@
-(ns clojure-template.server.protocols)
+(ns clojure-template.server.infrastructure.protocols)
 
 (defprotocol Migration
   "Protocol for database migration"

@@ -1,4 +1,4 @@
-(ns clojure-template.server.web-server
+(ns clojure-template.server.infrastructure.web-server
   (:require [aleph.http :refer [start-server]]
             [com.stuartsierra.component :as component]))
 

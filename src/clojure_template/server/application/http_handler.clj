@@ -1,5 +1,7 @@
-(ns clojure-template.server.http-handler
-  (:require [compojure.core :refer [ANY GET PUT POST DELETE routes]]
+(ns clojure-template.server.application.http-handler
+  (:require [bidi.bidi :as bidi]
+            [environ.core :refer [env]]
+            [compojure.core :refer [ANY GET PUT POST DELETE routes]]
             [compojure.route :refer [resources not-found]]
             [compojure.api.middleware :refer [wrap-components]]
             [ring.util.response :refer [redirect]]
@@ -9,10 +11,8 @@
             [ring.middleware.reload :refer [wrap-reload]]
             [prone.middleware :refer [wrap-exceptions]]
             [com.stuartsierra.component :as component]
-            [bidi.bidi :as bidi]
-            [environ.core :refer [env]]
-            [clojure-template.server.controllers.application :as application-controller]
-            [clojure-template.server.apis.base :as base-apis]
+            [clojure-template.server.application.controllers.application :as application-controller]
+            [clojure-template.server.application.apis.base :as base-apis]
             [clojure-template.common.routes :refer [app-routes]]))
 
 

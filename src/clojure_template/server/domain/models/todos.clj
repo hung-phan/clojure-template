@@ -1,4 +1,4 @@
-(ns clojure-template.server.models.todos
+(ns clojure-template.server.domain.models.todos
   (:require [schema.core :as s]))
 
 (s/defrecord Todo [id :- s/Num

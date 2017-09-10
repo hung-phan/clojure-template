@@ -1,9 +1,9 @@
 (ns clojure-template.server.main
-  (:require [com.stuartsierra.component :as component]
-            [environ.core :refer [env]]
-            [clojure-template.server.database :refer [new-database]]
-            [clojure-template.server.http-handler :refer [new-http-handler]]
-            [clojure-template.server.web-server :refer [new-server]])
+  (:require [environ.core :refer [env]]
+            [com.stuartsierra.component :as component]
+            [clojure-template.server.infrastructure.database :refer [new-database]]
+            [clojure-template.server.application.http-handler :refer [new-http-handler]]
+            [clojure-template.server.infrastructure.web-server :refer [new-server]])
   (:gen-class))
 
 
@@ -23,7 +23,7 @@
                              :username           "developer"
                              :password           "developer"
                              :database-name      "postgres"
-                             :server-name        "localhost"
+                             :server-name        "database"
                              :port-number        5432
                              :register-mbeans    false})
     :http-handler (component/using (new-http-handler)

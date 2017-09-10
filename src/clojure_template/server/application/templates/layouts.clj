@@ -1,4 +1,4 @@
-(ns clojure-template.server.templates.layouts
+(ns clojure-template.server.application.templates.layouts
   (:require [environ.core :refer [env]]
             [hiccup.page :refer [html5 include-css include-js]]))
 
@@ -8,7 +8,7 @@
           [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge"}]
           [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
           [:title "Application"]
-          (include-css "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
+          (include-css "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css")
           (include-css "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css")
           (include-css "/css/app.css")
           [:body

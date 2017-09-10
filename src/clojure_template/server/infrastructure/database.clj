@@ -1,9 +1,9 @@
-(ns clojure-template.server.database
+(ns clojure-template.server.infrastructure.database
   (:require [hikari-cp.core :as hikari]
             [ragtime.repl :as rag-repl]
             [ragtime.jdbc :as jdbc]
             [com.stuartsierra.component :as component]
-            [clojure-template.server.protocols :as protocols]))
+            [clojure-template.server.infrastructure.protocols :as protocols]))
 
 (defrecord Database [datasource-options datasource]
   component/Lifecycle

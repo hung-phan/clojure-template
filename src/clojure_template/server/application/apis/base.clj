@@ -1,6 +1,6 @@
-(ns clojure-template.server.apis.base
+(ns clojure-template.server.application.apis.base
   (:require [compojure.api.sweet :refer [api context]]
-            [clojure-template.server.apis.todos :refer [todos-api-v1]]))
+            [clojure-template.server.application.apis.todos :refer [todos-api-v1]]))
 
 (def apis
   (api
