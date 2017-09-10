@@ -6,9 +6,7 @@ WORKDIR /opt/app
 
 COPY project.clj .
 
-RUN lein deps
-
-RUN lein cljsbuild once prefetch_dependencies
+RUN lein deps && lein cljsbuild once prefetch_dependencies
 
 COPY . .
 
