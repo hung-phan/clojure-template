@@ -9,7 +9,7 @@
                  [org.clojure/data.generators "0.1.2"]
                  [org.clojure/core.async "0.3.443"]
                  [com.stuartsierra/component "0.3.2"]
-                 [aleph "0.4.3"]
+                 [aleph "0.4.4-alpha4"]
                  [ring "1.6.2"]
                  [ragtime "0.7.1"]
                  [ring/ring-defaults "0.3.1"]
