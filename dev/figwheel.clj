@@ -42,6 +42,7 @@
                                     :asset-path      "js/app"
                                     :output-to       "resources/public/js/app.js"
                                     :output-dir      "resources/public/js/app"
+                                    :preloads        '[clojure-template.client.dev]
                                     :closure-defines {"goog.DEBUG" true}}}]})
 
 (defrecord FigwheelServer [config]
