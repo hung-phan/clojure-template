@@ -1,18 +1,9 @@
-(ns user
-  (:require [figwheel-sidecar.repl-api :as figwheel]
-            [com.stuartsierra.component :as component]
-            [local.figwheel :refer [new-figwheel-server]]
-            [local.seed-data :refer [seed-todos]]
+(ns server.main-test
+  (:require [com.stuartsierra.component :as component]
             [server.main :refer [system-map prod-system]]
             [server.infrastructure.database :refer [new-database]]))
 
-;; Let Clojure warn you when it needs to reflect on types, or when it does math
-;; on unboxed numbers. In both cases you should add type annotations to prevent
-;; degraded performance.
-(set! *warn-on-reflection* true)
-(set! *unchecked-math* :warn-on-boxed)
-
-(def dev-system-map
+(def test-system-map
   (-> system-map
       (assoc :database (new-database {:auto-commit        true
                                       :read-only          false
@@ -26,25 +17,16 @@
                                       :adapter            "postgresql"
                                       :username           "developer"
                                       :password           "developer"
-                                      :database-name      "postgres"
+                                      :database-name      "test_postgres"
                                       :server-name        "localhost"
                                       :port-number        5432
                                       :register-mbeans    false}))
-      (assoc :figwheel (new-figwheel-server))))
+      ;; we don't need to start the web-server for testing
+      (dissoc :web-server)))
 
-(def dev-system
-  (atom dev-system-map))
-
-(defn start-system []
-  (swap! dev-system component/start-system))
-
-(defn stop-system []
-  (swap! dev-system component/stop-system))
-
-(defn restart-system []
-  (do
-    (stop-system)
-    (start-system)))
-
-(defn start-browser-repl []
-  (figwheel/cljs-repl))
+(defn with-test-system [fn]
+  (let [test-system (atom test-system-map)]
+    (swap! test-system component/start-system)
+    (-> @test-system :database .migrate)
+    (fn @test-system)
+    (swap! test-system component/stop-system)))

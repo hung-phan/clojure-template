@@ -49,7 +49,7 @@
   :uberjar-name "clojure-template.jar"
 
   ;; Use `lein run` if you just want to start a HTTP server, without figwheel
-  :main clojure-template.server.main
+  :main server.main
 
   ;; nREPL by default starts in the :main namespace, we want to start in `user`
   ;; because that's where our development helper functions like (run) and
@@ -60,7 +60,7 @@
               [{:id           "app_production"
                 :source-paths ["src"]
                 :jar          true
-                :compiler     {:main            clojure-template.client.main
+                :compiler     {:main            client.main
                                :output-to       "resources/public/js/app.js"
                                :output-dir      "target"
                                :optimizations   :advanced
@@ -69,13 +69,13 @@
 
                {:id           "test"
                 :source-paths ["src" "test"]
-                :compiler     {:main          clojure-template.client.test-runner
+                :compiler     {:main          client.test-runner
                                :output-to     "resources/public/js/test.js"
                                :optimizations :none}}
 
                {:id           "prefetch_dependencies"
                 :source-paths ["dev"]
-                :compiler     {:main          prefetch-dependencies
+                :compiler     {:main          local.prefetch-dependencies
                                :asset-path    "js/prefetch_dependencies"
                                :output-to     "resources/public/js/prefetch_dependencies.js"
                                :output-dir    "resources/public/js/prefetch_dependencies"
@@ -83,13 +83,13 @@
 
   :garden {:builds [{:id           "app_development"
                      :source-paths ["src"]
-                     :stylesheet   clojure-template.client.styles/app
+                     :stylesheet   client.styles/app
                      :compiler     {:output-to     "resources/public/css/app.css"
                                     :pretty-print? true}}
 
                     {:id           "app_production"
                      :source-paths ["src"]
-                     :stylesheet   clojure-template.client.styles/app
+                     :stylesheet   client.styles/app
                      :compiler     {:output-to     "resources/public/css/app.css"
                                     :pretty-print? false}}]}
 

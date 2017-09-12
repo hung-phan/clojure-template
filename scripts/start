@@ -7,4 +7,4 @@ if [ -z "${PORT}" ]; then
   export PORT=${2:-3000}
 fi
 
-java -cp target/clojure-template.jar clojure.main -m clojure-template.server.main
+java -cp target/clojure-template.jar clojure.main -m server.main
