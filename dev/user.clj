@@ -4,7 +4,7 @@
             [figwheel :refer [new-figwheel-server]]
             [seed-data :refer [seed-todos]]
             [clojure-template.server.main :refer [system-map prod-system]]
-            [clojure-template.server.database :refer [new-database]]))
+            [clojure-template.server.infrastructure.database :refer [new-database]]))
 
 ;; Let Clojure warn you when it needs to reflect on types, or when it does math
 ;; on unboxed numbers. In both cases you should add type annotations to prevent

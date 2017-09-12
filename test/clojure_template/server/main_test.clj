@@ -1,7 +1,7 @@
 (ns clojure-template.server.main-test
   (:require [com.stuartsierra.component :as component]
             [clojure-template.server.main :refer [system-map prod-system]]
-            [clojure-template.server.database :refer [new-database]]))
+            [clojure-template.server.infrastructure.database :refer [new-database]]))
 
 (def test-system-map
   (-> system-map
