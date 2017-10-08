@@ -16,5 +16,6 @@ figwheel_server.log
 pom.xml
 pom.xml.asc
 .idea/
+.java-version
 cookies
 clojure-template.iml
