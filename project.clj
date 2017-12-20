@@ -1,4 +1,4 @@
-(defproject clojure-template "0.1.0"
+(defproject clojure-template "1.0.0"
   :description "This is the todos template for clojures"
   :url "https://github.com/hung-phan/clojure-template"
   :license {:name "MIT"
@@ -35,10 +35,10 @@
                  [cljs-http "0.1.44"]
                  [binaryage/devtools "0.9.8"]]
 
-  :plugins [[lein-cljsbuild "1.1.3"]
-            [lein-environ "1.0.1"]]
+  :plugins [[lein-cljsbuild "1.1.7"]
+            [lein-environ "1.0.2"]]
 
-  :min-lein-version "2.6.1"
+  :min-lein-version "2.8.1"
 
   :source-paths ["src"]
 
@@ -101,13 +101,13 @@
                              [com.cemerick/piggieback "0.2.2"]
                              [org.clojure/tools.nrepl "0.2.13"]
                              [ring/ring-mock "0.3.2"]
-                             [midje "1.9.0"]]
+                             [midje "1.9.1"]]
 
               :plugins      [[lein-garden "0.2.8"]
-                             [lein-figwheel "0.5.2"]
-                             [lein-doo "0.1.6"]
+                             [lein-figwheel "0.5.14"]
+                             [lein-doo "0.1.8"]
                              [lein-midje "3.2.1"]
-                             [lein-auto "0.1.2"]]
+                             [lein-auto "0.1.3"]]
 
               :source-paths ["dev"]
 
