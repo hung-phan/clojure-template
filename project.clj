@@ -5,7 +5,7 @@
             :url  "https://opensource.org/licenses/MIT"}
 
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.9.946"]
+                 [org.clojure/clojurescript "1.10.64"]
                  [org.clojure/data.generators "0.1.2"]
                  [org.clojure/core.async "0.3.465"]
                  [com.stuartsierra/component "0.3.2"]
