@@ -5,6 +5,7 @@ resources/migration
 resources/public/css
 resources/public/js
 target
+test
 .lein-env
 .lein-failures
 .lein-repl-history

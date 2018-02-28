@@ -8,7 +8,7 @@
         remove_todo #(rf/dispatch (lb/remove-todo index))]
     [:tr
      [:td
-      (if complete[:s text] [:span text])]
+      (if complete [:s text] [:span text])]
      [:td
       [:button.btn.btn-xs.btn-success
        {:type "button" :on-click complete-todo}

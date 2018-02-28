@@ -2,20 +2,19 @@
   (:require [aleph.http :refer [start-server]]
             [com.stuartsierra.component :as component]))
 
-(defrecord Server [port http-handler stop-server-callback]
+(defrecord Server [port http-handler netty-server]
   component/Lifecycle
 
   (start [this]
     (println "Web server start at port" port)
-
-    (let [stop-server-callback (start-server (:handler http-handler) {:port port})]
-      (assoc this :stop-server-callback stop-server-callback)))
+    (assoc this :netty-server
+                (start-server (:handler http-handler)
+                              {:port port})))
 
   (stop [this]
-    (when stop-server-callback
+    (when netty-server
       (println "Web server stop")
-
-      (stop-server-callback)
+      (.close netty-server)
       (assoc this :stop-server-callback nil))))
 
 (defn new-server [port]
