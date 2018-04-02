@@ -104,8 +104,8 @@
                              [midje "1.9.1"]]
 
               :plugins      [[lein-garden "0.2.8"]
-                             [lein-figwheel "0.5.14"]
-                             [lein-doo "0.1.8"]
+                             [lein-figwheel "0.5.15"]
+                             [lein-doo "0.1.10"]
                              [lein-midje "3.2.1"]
                              [lein-auto "0.1.3"]]
 
