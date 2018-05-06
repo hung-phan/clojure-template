@@ -2,7 +2,7 @@
   (:require [schema.core :as s]
             [compojure.api.sweet :refer [GET]]
             [ring.util.http-response :refer [ok]]
-            [server.domain.daos.todos :as todos-dao]))
+            [server.domain.dao.todos :as todos-dao]))
 
 (def todos-api-v1
   (GET "/todos" []
