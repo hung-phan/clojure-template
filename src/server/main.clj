@@ -1,9 +1,9 @@
 (ns server.main
   (:require [environ.core :refer [env]]
             [com.stuartsierra.component :as component]
-            [server.infrastructure.database :refer [new-database]]
+            [server.infrastructure.persistence.database :refer [new-database]]
             [server.application.http-handler :refer [new-http-handler]]
-            [server.infrastructure.web-server :refer [new-server]])
+            [server.application.web-server :refer [new-server]])
   (:gen-class))
 
 

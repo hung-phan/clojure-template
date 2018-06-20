@@ -1,4 +1,4 @@
-(ns server.domain.model.todos
+(ns server.domain.model.todo
   (:require [schema.core :as s]))
 
 (s/defrecord Todo [id :- s/Num

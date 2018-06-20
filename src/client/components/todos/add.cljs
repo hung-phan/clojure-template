@@ -7,8 +7,8 @@
   (let [todo (rc/atom "")
         update-todo #(reset! todo (-> % .-target .-value))
         add-todo #(do
-                   (rf/dispatch (lb/add-todo @todo))
-                   (reset! todo ""))]
+                    (rf/dispatch (lb/add-todo @todo))
+                    (reset! todo ""))]
     (fn []
       [:div.col-md-12
        [:div.form-inline

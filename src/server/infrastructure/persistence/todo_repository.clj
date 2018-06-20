@@ -1,6 +1,6 @@
-(ns server.domain.dao.todos
+(ns server.infrastructure.persistence.todo_repository
   (:require [clojure.java.jdbc :as jdbc]
-            [server.domain.model.todos :refer [map->Todo]]))
+            [server.domain.model.todo :refer [map->Todo]]))
 
 (defn all [database]
   (jdbc/with-db-connection

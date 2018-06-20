@@ -1,4 +1,4 @@
-(ns server.infrastructure.web-server
+(ns server.application.web-server
   (:require [aleph.http :refer [start-server]]
             [com.stuartsierra.component :as component]))
 

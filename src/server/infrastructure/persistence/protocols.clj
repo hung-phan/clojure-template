@@ -1,4 +1,4 @@
-(ns server.infrastructure.protocols)
+(ns server.infrastructure.persistence.protocols)
 
 (defprotocol Migration
   "Protocol for database migration"

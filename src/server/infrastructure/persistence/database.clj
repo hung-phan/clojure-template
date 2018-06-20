@@ -1,9 +1,9 @@
-(ns server.infrastructure.database
+(ns server.infrastructure.persistence.database
   (:require [hikari-cp.core :as hikari]
             [ragtime.repl :as rag-repl]
             [ragtime.jdbc :as jdbc]
             [com.stuartsierra.component :as component]
-            [server.infrastructure.protocols :as protocols]))
+            [server.infrastructure.persistence.protocols :as protocols]))
 
 (defrecord Database [datasource-options datasource]
   component/Lifecycle

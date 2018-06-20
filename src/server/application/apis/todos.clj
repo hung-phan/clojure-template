@@ -2,11 +2,11 @@
   (:require [schema.core :as s]
             [compojure.api.sweet :refer [GET]]
             [ring.util.http-response :refer [ok]]
-            [server.domain.dao.todos :as todos-dao]))
+            [server.infrastructure.persistence.todo_repository :as todo-repository]))
 
 (def todos-api-v1
   (GET "/todos" []
     :return [{:id s/Num :text s/Str :complete s/Bool}]
     :summary "get todos list"
     :components [database]
-    (ok (todos-dao/all database))))
+    (ok (todo-repository/all database))))
