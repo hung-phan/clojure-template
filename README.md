@@ -2,9 +2,6 @@
 
 [![build status](https://travis-ci.org/hung-phan/clojure-template.svg?branch=master)](http://travis-ci.org/hung-phan/clojure-template/)
 
-The idea of this repository is to try out all concepts and libraries for React.js.
-Additionally, this will be the boilerplate Reframe.
-
 ## Development
 Require docker and docker-compose
 
