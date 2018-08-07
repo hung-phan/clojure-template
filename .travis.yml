@@ -1,0 +1,25 @@
+sudo: required
+
+language: clojure
+jdk: oraclejdk8
+
+before_install:
+  - sudo service postgresql stop
+  - while sudo lsof -Pi :5432 -sTCP:LISTEN -t; do sleep 1; done
+  - docker-compose -f docker-compose.test.yml up -d
+
+cache:
+  directories:
+  - $HOME/.m2
+
+script:
+  - lein test
+  - lein midje
+  - lein doo phantom
+
+after_script:
+  - docker-compose -f docker-compose.test.yml down
+
+after_success:
+  - CLOVERAGE_VERSION=1.0.7-SNAPSHOT lein cloverage --codecov
+  - bash <(curl -s https://codecov.io/bash) -f target/coverage/codecov.json
