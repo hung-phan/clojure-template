@@ -13,7 +13,7 @@ cache:
   - $HOME/.m2
 
 script:
-  - lein test && lein midje && lein doo phantom
+  - lein test && lein midje && lein doo phantom once
 
 after_script:
   - docker-compose -f docker-compose.test.yml down
