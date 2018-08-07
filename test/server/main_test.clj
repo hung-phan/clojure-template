@@ -1,7 +1,7 @@
 (ns server.main-test
   (:require [com.stuartsierra.component :as component]
             [server.main :refer [system-map prod-system]]
-            [server.infrastructure.database :refer [new-database]]))
+            [server.infrastructure.persistence.database :refer [new-database]]))
 
 (def test-system-map
   (-> system-map
