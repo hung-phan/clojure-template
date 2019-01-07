@@ -4,14 +4,14 @@
   :license {:name "MIT"
             :url  "https://opensource.org/licenses/MIT"}
 
-  :dependencies [[org.clojure/clojure "1.9.0"]
+  :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/clojurescript "1.10.439"]
                  [org.clojure/data.generators "0.1.2"]
-                 [org.clojure/core.async "0.4.474"]
-                 [com.stuartsierra/component "0.3.2"]
+                 [org.clojure/core.async "0.4.490"]
+                 [com.stuartsierra/component "0.4.0"]
                  [aleph "0.4.6"]
                  [ring "1.7.1"]
-                 [ragtime "0.7.2"]
+                 [ragtime "0.8.0"]
                  [ring/ring-defaults "0.3.2"]
                  [bk/ring-gzip "0.3.0"]
                  [ring.middleware.logger "0.5.0"]
@@ -25,9 +25,9 @@
                  [environ "1.1.0"]
                  [hiccup "1.0.5"]
                  [cheshire "5.8.1"]
-                 [funcool/cats "2.3.1"]
+                 [funcool/cats "2.3.2"]
                  [ns-tracker "0.3.1"]
-                 [bidi "2.1.4"]
+                 [bidi "2.1.5"]
                  [garden "1.3.6"]
                  [reagent "0.8.1"]
                  [re-frame "0.10.6"]
@@ -96,16 +96,16 @@
   :doo {:build "test"}
 
   :profiles {:dev
-             {:dependencies [[figwheel "0.5.17"]
-                             [figwheel-sidecar "0.5.17"]
+             {:dependencies [[figwheel "0.5.18"]
+                             [figwheel-sidecar "0.5.18"]
                              [com.cemerick/piggieback "0.2.2"]
                              [org.clojure/tools.nrepl "0.2.13"]
                              [ring/ring-mock "0.3.2"]
                              [midje "1.9.4"]]
 
               :plugins      [[lein-garden "0.2.8"]
-                             [lein-figwheel "0.5.17"]
-                             [lein-doo "0.1.10"]
+                             [lein-figwheel "0.5.18"]
+                             [lein-doo "0.1.11"]
                              [lein-midje "3.2.1"]
                              [lein-auto "0.1.3"]]
 
